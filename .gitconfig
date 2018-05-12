@@ -1,0 +1,10 @@
+[user]
+	name = Renaud Germain
+	email = renaud.germain@gmail.com
+[core]
+	pager = /bin/cat
+[color]
+	diff = always
+	status = auto
+	branch = auto
+	ui = auto

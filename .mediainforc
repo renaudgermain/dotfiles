@@ -1,0 +1,3 @@
+General;%CompleteName%	(%Format%, %FileSize/String%, %Duration/String2%)
+Video;	\[Video\] %CodecID%, %Width% x %Height%
+Audio;	\[Audio\] %Format%

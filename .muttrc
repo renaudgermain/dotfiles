@@ -1,0 +1,124 @@
+set from="Renaud Germain <renaud.germain@gmail.com>"
+set folder=~/.mail
+set spoolfile=+inbox
+set postponed=+postponed
+set record=+sent
+mailboxes +inbox +emploi +tech
+
+unset help recall markers confirmappend collapse_unread move pager_format ascii_chars wait_key
+set envelope_from fast_reply include status_on_top pager_stop pgp_replyencrypt copy use_from
+set pgp_autosign reply_to smart_wrap # pipe_decode autoedit auto_tag delete
+set rfc2047_parameters mime_forward
+
+set status_format="[Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?]%> (%P)"
+set date_format="%b%d %H:%M"
+set index_format="%-12D  %-${SENDER_WIDTH}.${SENDER_WIDTH}L  %-75.75s  %> %?M?(%M)?"
+set forward_format="Fwd: %s"
+
+set query_command="abook --datafile ~/.abook/addressbook --mutt-query '%s'"
+set charset="utf-8"
+set send_charset="utf-8"
+set quote_regexp="^([ \t]*[A-Za-z]*>)+"
+set sendmail="/usr/bin/msmtp"
+# dsn_notify et dsn_return pour les accuses de reception
+set ispell="aspell -c --mode=email --lang=fr"
+
+ignore X- Reply-to: List- Resent- Old-return-path
+unignore date: X-Mailer: User-Agent:
+hdr_order From: Date: To: Cc: Subject: user-agent: X-Mailer:
+unauto_view text/html
+
+folder-hook .                          push \eV #collapse all threads when entering a folder
+folder-hook sent                       set sort="date-sent"
+folder-hook !sent                      set sort="threads"
+folder-hook 'debian-security|bugtraq'  set pager_index_lines=10
+
+bind pager q quit
+
+macro index               \cV     <next-page>
+macro index               \ev     <previous-page>
+macro index               <Space> <collapse-thread>
+macro generic,index,pager \ca     "<shell-escape>abook<return>" "launch abook"
+macro index,pager         A       "<pipe-message>abook --add-email<return>" "add the sender address to abook"
+
+color normal     default     default
+color tilde      default     default
+color header     green       default "subject:"
+color hdrdefault magenta     default
+color signature  magenta     default
+color indicator  brightwhite default
+color error      red         default
+color status     green       default
+color tree       magenta     default
+color attachment magenta     default
+color search     white       blue
+color body       magenta     default "((ftp|http|https)://|news:)[^ >)\"\t]+"
+color body       magenta     default "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+color body       brightgreen default "^(gpg: )?(Good signature|Korrekte Unterschrift)"
+color body       brightred   default "^(gpg: )?Bad signature"
+color body       red         default "^(gpg: )?WARN[UI]NG:"
+color body       magenta     default '"[^"]+"'
+color body       red         default "(^| )\\*[-a-z0-9]+\\*[,.?]?[ \n]"
+color body       green       default "(^| )_[-a-z0-9]+_[,.?]?[ \n]"
+color body       magenta     default "^[[:upper:]][^ABCDEFGHIJKLMNOPQRSTUVWXYZ ]+:.*"
+color body       magenta     default  "-*.*Original Message.*-*"
+color body       blue        default "^([0-9]{4}\-[0-9]{2}\-[0-9]{2}|[A-Z][a-z][a-z] [123 ][0-9])[T ][0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{6}-04:00)?"
+color body       red         default "[^A-Za-z][Ff][Aa][Ii][Ll]([Ee][Dd])?[^A-Za-z]"
+color body       red         default "[^A-Za-z](error|fail|unreadable|invalid|exception)([^A-Za-z]|$)"
+color body       green       default "[Ss]uccess(ful)?"
+color body       blue        default " delta [A-Za-z-]+(\[[0-9]+\])?:"
+color quoted     white       default
+color quoted1    green       default
+color quoted2    yellow      default
+color quoted3    red         default
+color quoted4    cyan        default
+color quoted5    magenta     default
+color index      magenta     default ~F
+color index      white       default ~N|~O
+color index      yellow      default ~T
+color index      blue        default ~D
+
+
+# #
+# # title:    vimbrant - a mutt color scheme
+# # author:   thayer williams
+# # website:  http://cinderwick.ca/
+# #
+# color   normal      white           default     # default colours
+# color   index       red             default ~N  # new messages
+# color   index       green           default ~F  # flagged messages
+# color   index       blue            default ~T  # tagged messages
+# color   index       cyan            default ~D  # deleted messages
+# color   body        yellow          default     (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# color   body        brightyellow    default     [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+# color   attachment  magenta         default     # attachments
+# color   signature   brightwhite     default     # sigs
+# color   search      brightred       black       # highlight results
+#
+# color   indicator   magenta         default     # currently highlighted message
+# color   error       red             default     # error messages
+# color   status      brightwhite     cyan        # status line (unread msgs, current dir, etc.)
+# color   markers     brightwhite     cyan        # shortcut statusline (q:Quit, etc.)
+# color   tree        yellow          default     # tree thread arrows
+# color   tilde       cyan            default     # blank line padding
+#
+# color   hdrdefault  black           cyan        # default headers
+# color   header      brightwhite     cyan        "^From:"
+# color   header      brightwhite     cyan        "^Subject:"
+#
+# color   quoted      cyan            default     # quote colours
+# color   quoted1     brightcyan      default
+# color   quoted2     green           default
+# color   quoted3     blue            default
+# color   quoted4     yellow          default
+# color   quoted5     red             default
+#
+# color   body        green           default     "^gpg: Good signature from"
+# color   body        brightred       default     "^gpg: Bad signature from"
+# color   body        brightred       default     "^gpg: BAD signature from"
+# color   body        brightred       default     "^gpg: Note: This key has expired!"
+# color   body        brightyellow    default     "^gpg: WARNING: This key is not certified with a trusted signature!"
+# color   body        brightyellow    default     "^gpg:          There is no indication that the signature belongs to the owner."
+# color   body        brightyellow    default     "^gpg: can't handle these multiple signatures"
+# color   body        brightyellow    default     "^gpg: signature verification suppressed"
+# color   body        brightyellow    default     "^gpg: invalid node with packet of type"
