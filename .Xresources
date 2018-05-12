@@ -17,3 +17,11 @@ URxvt*internalBorder: 0
 
 ! TODO copy ~/.emacs.d/cyberpunk-theme.el colors to this one:
 ! #include "/home/rcog/.Xdefaults.c.vimbrant"
+
+XTerm*scrollBar: false
+XTerm*metaSendsEscape: true
+XTerm*background: black
+XTerm*foreground: #a4b4fa
+XTerm*border: false
+XTerm*faceName: Inconsolata:pixelsize=14
+XTerm*fullscreen: true
