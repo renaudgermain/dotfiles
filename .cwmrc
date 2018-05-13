@@ -1,1 +1,8 @@
 borderwidth 0
+sticky yes
+
+bind-key 4-Return urxvt
+bind-key 4-l      group-cycle
+bind-key 4-h      group-rcycle
+bind-key 4-j      window-cycle
+bind-key 4-k      window-rcycle

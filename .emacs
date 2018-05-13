@@ -29,6 +29,8 @@
       ispell-program-name            "aspell"
       visible-cursor                 nil
       js-indent-level                2
+      browse-url-browser-function    'browse-url-generic
+      browse-url-generic-program     "x-www-browser"
       ido-ignore-buffers             '("\\` " "^\*"))
 
 (setq-default transient-mark-mode    t
