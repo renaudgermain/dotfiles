@@ -1,4 +1,5 @@
 (define-key global-map "\C-x\C-f" 'find-file-at-point)
+(global-set-key (kbd "M-RET") 'java-imports-add-import-dwim)
 
 (require 'package)
 (add-to-list 'package-archives
@@ -6,16 +7,15 @@
 (package-initialize)
 ;; M-x package-install RET markdown-mode RET
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/cyberpunk-theme.el"); from https://emacsthemes.com -> https://github.com/n3mo/cyberpunk-theme.el
-(add-hook 'after-init-hook (lambda () (load-theme 'cyberpunk t)))
-
 (transient-mark-mode 1)
 (menu-bar-mode -1)
 (show-paren-mode t)
 (save-place-mode 1)
 (ido-mode t)
+(jdecomp-mode 1)
 
 (setq default-tab-width              2
+      sh-basic-offset                2
       scroll-step                    1
       inhibit-startup-message        t
       require-final-newline          t
@@ -28,8 +28,7 @@
       ispell-program-name            "aspell"
       visible-cursor                 nil
       js-indent-level                2
-      browse-url-browser-function    'browse-url-generic
-      browse-url-generic-program     "x-www-browser"
+      browse-url-browser-function    'browse-url-firefox
       ido-ignore-buffers             '("\\` " "^\*" "TAGS")
       org-startup-folded             'content
       tags-case-fold-search          nil
@@ -44,26 +43,30 @@
               fill-column            80
               mode-line-format       nil)
 
+;; https://emacs.stackexchange.com/questions/17440/define-the-behaviour-of-help-window
 (setq fish-mode-hook       '((lambda () (linum-mode 1)))
       emacs-lisp-mode-hook '((lambda () (linum-mode 1)))
       javascript-mode      '((lambda () (linum-mode 1)))
       haskell-mode-hook    '((lambda () (linum-mode 1)))
-      html-mode-hook       '((lambda () (linum-mode 1)))
       html-mode-hook       '((lambda ()
                                (linum-mode 1)
                                (set (make-local-variable 'sgml-basic-offset) 4)))
       nxml-mode-hook       '((lambda () (linum-mode 1)))
       java-mode-hook       '((lambda () (linum-mode 1)
                                (setq indent-tabs-mode t)
+                               (lambda () (java-imports-scan-file))
                                (setq c-offsets-alist
-                                     (append '((arglist-intro . +) (case-label . +))
+                                     (append '((arglist-intro . +) (case-label . +) (arglist-cont-nonempty . +) (arglist-close . 0))
                                              c-offsets-alist))
                                (setq c-basic-offset 2)))
       css-mode-hook        '((lambda () (linum-mode 1)))
       go-mode-hook         '((lambda () (linum-mode 1)))
       mail-mode-hook       '(auto-fill-mode)
+      python-mode-hook     '((lambda () (linum-mode 1)))
+      scala-mode-hook      '((lambda () (linum-mode 1)))
       ;; haskell-mode-hook '((lambda () (load "haskell-site-file.el")))
       ;; sml-mode-hook    '(lambda () (defun run-sml () (interactive) (sml-run "sml" "-Cprint.depth=100")))
+      before-save-hook     '(delete-trailing-whitespace (lambda () (copyright-update t)));; TODO indent file, remove unused imports, TODO disable when editing liquidbase changesets (e.g. update_MAIN.xml)
       )
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;; (add-hook 'tuareg-mode-hook 'toggle-input-method)
@@ -83,21 +86,22 @@
               (list (cons (concat "^" (expand-file-name "~/") "\\.") 'shell-script-mode))
               ))
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace);; TODO indent file, update copyright, remove unused imports, TODO disable when editing liquidbase changesets (e.g. update_MAIN.xml)
-
 ;; TODO java format on save
 
+(customize-set-variable
+ 'display-buffer-alist
+ '(
+   ;; ("\\*xref\\*" display-buffer-below-selected); switch-to-buffer might be sensible
+   ;; ("\\*Help\\*" display-below-selected)
+   )); display temporary *Help* buffer at the bottom, see https://www.gnu.org/software/emacs/manual/html_node/elisp/Display-Action-Functions.html
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
+ '(package-selected-packages
    (quote
-    ("0eb173dcdd23dbc02e0a178c7e8d3d9a9697786c11ef68b77b8b6255d4163cfd" default)))
- '(cyberpunk-transparent-background t)
- '(package-selected-packages (quote (fish-mode markdown-mode haskell-mode go-mode))))
-
+    (mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -105,6 +109,11 @@
  ;; If there is more than one, they won't work right.
  )
 
+(customize-set-variable 'jdecomp-decompiler-paths '((cfr . "/usr/local/Cellar/cfr-decompiler/0.128/libexec/cfr_0_128.jar")))
+(customize-set-variable 'copyright-regexp "\\(Copyright\\s *\\)\\(2[0-9]+\\)")
+(customize-set-variable 'copyright-query nil)
+
+(require 'ansi-color)
 (defun display-ansi-colors ()
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))

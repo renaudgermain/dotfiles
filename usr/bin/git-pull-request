@@ -1,0 +1,55 @@
+#!/bin/sh -e
+
+# Update BitBucket pull request
+
+branch=$(git symbolic-ref -q HEAD 2>/dev/null)
+
+case $1 in
+  --reviewers)
+    # https://docs.atlassian.com/bitbucket-server/rest/5.1.0/bitbucket-rest.html#idm45588159997168
+    # /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/pull-requests/{pullRequestId}"
+
+    reviewers=$2
+    curl -u $LOGNAME -H "Content-Type: application/json" -X PUT https://$BITBUCKET/rest/api/1.0/projects/$BITBUCKET_SLUG/repos/ftk-bss/pull-requests/3300 -d "{
+      \"id\": 3300,
+      \"version\": 1,
+      \"title\": \"myTitle\",
+      \"description\": \"myDescription\",
+      \"reviewers\": [
+        {
+          \"user\": {
+            \"name\": \"vfermi\"
+          }
+        }
+      ],
+      \"links\": {
+        \"self\": [
+          null
+        ]
+      }
+    }"
+    ;;
+  --build)
+    # TODO build teamcity link from simple ID & infer state from teamcity query
+    status=$2
+
+    # https://developer.atlassian.com/server/bitbucket/how-tos/updating-build-status-for-commits/ (put under `* Bitbucket`)
+    # curl -X PUT -u 'username:password' https://api.bitbucket.org/2.0/repositories/{owner}/{repo_slug}/pullrequests/{pullrequest_id} -d @payload --header "Content-Type: application/json" -v
+
+    teamcity_link="https://$TEAMCITY/viewType.html?buildTypeId=Backoffice_Ftk_Features_EpicsAndMaster&branch_Backoffice_Ftk_Features=${branch##refs/heads/}&tab=buildTypeStatusDiv"
+    curl -u $LOGNAME -H "Content-Type: application/json" -X POST https://$BITBUCKET/rest/build-status/1.0/commits/$(git rev-parse HEAD) -d "{
+          \"key\": \"UNIT_TESTS\",
+          \"url\": \"$teamcity_link\",
+          \"state\": \"$status\",
+          \"name\": \"unit tests\",
+          \"description\": \"unit tests\"
+        }"
+    ;;
+  --create)
+    remote=$(git remote get-url --push origin)
+    open "${remote//.git}/compare/${branch##refs/heads/}?expand=1"
+    ;;
+  *)
+    echo "Usage: git pull-request [--build { SUCCESSFUL | INPROGRESS | FAILED }] [--reviewers user1[,user2[,...]]] [--create]"
+    ;;
+esac

@@ -2,9 +2,11 @@
   name = Renaud Germain
 [core]
   excludesfile = ~/.gitignore_global
-  pager = /bin/cat
 [color]
   ui = always
 [alias]
   mdiff = diff --word-diff --minimal -w -b
+  fpush = "!f(){ git push origin :$(git symbolic-ref -q HEAD 2>/dev/null) && git push origin; };f"
   pr = pull-request
+[push]
+  default = current

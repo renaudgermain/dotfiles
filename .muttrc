@@ -1,9 +1,8 @@
-source "gpg2 -d ~/.cache/mutt/passwords.gpg |"
-# set my_pass="`pass show renaud.germain/gmail.com`"
-
 set from="Renaud Germain <${EMAIL}>"
 set imap_user="${EMAIL}"
+set imap_pass=`pass show ${EMAIL}/gmail.com`
 set smtp_url="smtps://${EMAIL}@smtp.gmail.com:465/"
+set smtp_pass=`pass show ${EMAIL}/gmail.com`
 set smtp_authenticators="gssapi:login"
 set folder=imaps://imap.gmail.com/ # TODO enable imap access in gmail's options?
 # set folder=imaps://username@imap.gmail.com/ # ... for multiple accounts
@@ -11,14 +10,15 @@ set spoolfile=+Inbox
 set postponed=+[Gmail]/Drafts
 set header_cache = ~/.cache/mutt
 set message_cachedir = ~/.cache/mutt
+set certificate_file=~/.mutt.certificates
 
 unset help recall markers confirmappend collapse_unread move pager_format ascii_chars wait_key record
 set envelope_from fast_reply include status_on_top pager_stop pgp_replyencrypt copy use_from
 set pgp_autosign reply_to smart_wrap # pipe_decode autoedit auto_tag delete
 set rfc2047_parameters mime_forward ssl_force_tls
 
-set pgp_sign_command="gpg2 --no-verbose --output - --armor --detach-sign --textmode %?a?-u %a? %f"
-set pgp_verify_command="gpg2 --no-verbose --output - --verify %s %f"
+set pgp_sign_command="gpg --no-verbose --output - --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_verify_command="gpg --no-verbose --output - --verify %s %f"
 set pgp_use_gpg_agent="yes"
 
 set status_format="[Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?]%> (%P)"
@@ -32,11 +32,13 @@ set send_charset="utf-8"
 set quote_regexp="^([ \t]*[A-Za-z]*>)+"
 # dsn_notify et dsn_return pour les accuses de reception
 set ispell="aspell -c --mode=email --lang=fr"
+set ispell="aspell -c --mode=email --lang=fr"
 
 ignore X- Reply-to: List- Resent- Old-return-path
 unignore date: X-Mailer: User-Agent:
 hdr_order From: Date: To: Cc: Subject: user-agent: X-Mailer:
-unauto_view text/html
+auto_view text/html
+alternative_order text/plain text/enriched text/html
 
 folder-hook .                          push \eV #collapse all threads when entering a folder
 folder-hook sent                       set sort="date-sent"

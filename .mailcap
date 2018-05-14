@@ -1,4 +1,4 @@
-image/*; feh --scale-down -B black '%s'; edit=gimp %s
+image/*; open -a firefox -g %s; copiousoutput
 
 application/msword;             less %s;                   copiousoutput
 application/vnd.ms-word;        less %s;                   copiousoutput
@@ -7,9 +7,10 @@ application/x-excel;            xls2csv %s;                copiousoutput
 application/vnd.ms-excel;       xls2csv %s;                copiousoutput
 
 application/epub+zip;           mupdf '%s'
+text/html; open -g %s &; test=test -n "$DISPLAY"; needsterminal;
 text/html;                      w3m -I %{charset} -T text/html -dump %s; copiousoutput; edit=emacs '%s'
 text/htm;                       w3m -I %{charset} -T text/html -dump %s; copiousoutput; edit=emacs '%s'
-application/pdf;                mupdf '%s'
+application/pdf; open -a firefox %s; copiousoutput
 
 video/*;       mpv --really-quiet '%s'
 application/x-directory; see '%s'/*

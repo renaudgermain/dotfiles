@@ -1,0 +1,24 @@
+#!/bin/sh -e
+
+# set -x
+branch=$(git symbolic-ref -q HEAD 2>/dev/null)
+
+# use case
+#   $ goto teamcity
+#   $ navigate to latest / current build, yy
+#   $ git pull-request $url # ⌘ - v
+
+case $1 in
+    teamcity|tc)
+        open "https://$TEAMCITY/viewType.html?buildTypeId=Backoffice_Ftk_Features_EpicsAndMaster&branch_Backoffice_Ftk_Features=${branch##refs/heads/}&tab=buildTypeStatusDiv"
+        ;;
+    jira)
+        open https://$JIRA/browse/$(echo $branch | perl -lpe 's|.*/(BOA-\d+).*|$1|')
+        ;;
+    github)
+        open $(git remote get-url origin | perl -lpe 's|:|/|;s|git@|https://|')
+        ;;
+    *)
+        echo "Usage: $(basename $0) {github|jira|teamcity|tc}"
+        ;;
+esac
