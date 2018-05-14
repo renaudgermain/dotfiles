@@ -33,3 +33,7 @@ tmp
 .password-store
 .surf/cache
 .surf/cookies.txt
+.emacs.d/elpa
+.emacs.d/ido.last
+.emacs.d/places
+.zhistory
