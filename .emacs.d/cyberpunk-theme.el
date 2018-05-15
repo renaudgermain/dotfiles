@@ -88,8 +88,7 @@
       (cyberpunk-blue-8 "#4F94CD")
       (cyberpunk-magenta "#dc8cc3")
       (cyberpunk-black (if (and cyberpunk-transparent-background
-                                (not (display-graphic-p))
-                                (eq system-type 'gnu/linux))
+                                (not (display-graphic-p)))
                            "ARGBBB000000"
                          "#000000"))
       (cyberpunk-black-2 "#0C1021")
