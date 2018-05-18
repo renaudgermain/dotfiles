@@ -15,6 +15,7 @@ case $(uname):$(tty) in
         ;;
     Linux:*)
         feh --bg-center --no-fehbh ~/.wallpaper.jpg
+        xrdb ~/.Xresources # -merge ?
         xsetroot -cursor_name left_ptr
         xset r rate 500 90
         urxvt &
