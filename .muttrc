@@ -5,6 +5,17 @@ set postponed=+postponed
 set record=+sent
 mailboxes +inbox +emploi +tech
 
+set imap_user=renaud.germain@gmail.com
+set smtp_url="smtps://renaud.germain@gmail.com@smtp.gmail.com:465/"
+# set smtp_authenticators = 'gssapi:login'
+set folder=imaps://imap.gmail.com/ # TODO enable imap access in gmail's options?
+# set folder=imaps://username@imap.gmail.com/ # ... for multiple accounts
+set spoolfile=+Inbox
+set postponed=+[Gmail]/Drafts
+set header_cache = ~/.cache/mutt
+set message_cachedir = ~/.cache/mutt
+
+
 unset help recall markers confirmappend collapse_unread move pager_format ascii_chars wait_key
 set envelope_from fast_reply include status_on_top pager_stop pgp_replyencrypt copy use_from
 set pgp_autosign reply_to smart_wrap # pipe_decode autoedit auto_tag delete
