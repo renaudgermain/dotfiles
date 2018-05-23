@@ -8,7 +8,10 @@ case $(uname):$(tty) in
         xrandr -s 1
         xset r rate 500 90
         urxvt &
-        exec ssh-agent cwm
+        xid=$(mktemp /tmp/tabbed.XXXXXXXXXXXX)
+        tabbed -g 1024x768+0+0 -d > $xid
+        surf -e $(< $xid)
+        exec ssh-agent env TABBED_XID=$(< $xid) cwm
         ;;
     Linux:/dev/tty1)
         exec qemu-system-x86_64 -full-screen -no-frame -m 2048 -machine pc,accel=kvm -cpu kvm64 -enable-kvm -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22 -device e1000,netdev=mynet0 -smp 4 ~/.qemu/gulf.img
