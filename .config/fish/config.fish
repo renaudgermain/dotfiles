@@ -127,5 +127,3 @@ set fish_greeting
 # if [ -n "$DISPLAY" ]; then xset -b; fi
 
 # if daemon doesn't exist, run `emacs --daemon`
-
-fetchmail
