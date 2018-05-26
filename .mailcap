@@ -1,9 +1,4 @@
-image/x-bmp; feh --scale-down -B black '%s'; edit=gimp %s
-image/gif;   feh --scale-down -B black '%s'; edit=gimp %s
-image/jpeg;  feh --scale-down -B black '%s'; edit=gimp %s
-image/jpg;   feh --scale-down -B black '%s'; edit=gimp %s
-image/tiff;  feh --scale-down -B black '%s'; edit=gimp %s
-image/png;   feh --scale-down -B black '%s'; edit=gimp %s
+image/*; feh --scale-down -B black '%s'; edit=gimp %s
 
 application/msword;             less %s;                   copiousoutput
 application/vnd.ms-word;        less %s;                   copiousoutput
@@ -16,20 +11,7 @@ text/html;                      w3m -T text/html -dump %s; copiousoutput; edit=e
 text/htm;                       w3m -T text/html -dump %s; copiousoutput; edit=emacs '%s'
 application/pdf;                mupdf '%s'
 
-video/mpeg;       mpv --really-quiet '%s'
-video/mp4;        mpv --really-quiet '%s'
-video/quicktime;  mpv --really-quiet '%s'
-video/x-mpeg2;    mpv --really-quiet '%s'
-video/x-mpeg;     mpv --really-quiet '%s'
-video/x-ms-afs;   mpv --really-quiet '%s'
-video/x-ms-asf;   mpv --really-quiet '%s'
-video/x-msvideo;  mpv --really-quiet '%s'
-video/x-ms-wma;   mpv --really-quiet '%s'
-video/x-ms-wmv;   mpv --really-quiet '%s'
-video/x-ms-wmx;   mpv --really-quiet '%s'
-video/x-ms-wvx;   mpv --really-quiet '%s'
-video/x-msvideo;  mpv --really-quiet '%s'
-video/x-matroska; mpv --really-quiet '%s'
+video/*;       mpv --really-quiet '%s'
 application/x-directory; see '%s'/*
 
 text/plain; less '%s'; edit=emacs '%s'
