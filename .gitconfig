@@ -1,10 +1,9 @@
 [user]
-	name = Renaud Germain
-	email = renaud.germain@gmail.com
+  name = Renaud Germain
 [core]
-	pager = /bin/cat
+  excludesfile = ~/.gitignore_global
 [color]
-	diff = always
-	status = auto
-	branch = auto
-	ui = auto
+  ui = always
+[alias]
+  mdiff = diff --word-diff --minimal -w -b
+  pr = pull-request
