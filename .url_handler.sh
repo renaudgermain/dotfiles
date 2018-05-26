@@ -32,7 +32,7 @@
 
 # The lists of programs to be executed are
 http_prgs="/usr/bin/sensible-browser:PW /usr/bin/sensible-browser:XT /usr/bin/galeon:PW /usr/bin/konqueror:PW /usr/bin/mozilla:PW /usr/bin/lynx:XT /usr/bin/w3m:XT /usr/bin/links:XT"
-# http_prgs="$HOME/usr/bin/foxtrot_firefox:PW"
+http_prgs="$HOME/usr/bin/x-www-browser:PW"
 https_prgs=$http_prgs
 mailto_prgs="/usr/bin/mutt:VT /usr/bin/elm:VT /usr/bin/alpine:VT /usr/bin/pine:VT /usr/bin/mail:VT"
 gopher_prgs="/usr/bin/gopher:XT /usr/bin/lynx:XT"
