@@ -4,6 +4,7 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export NVM_DIR=~/.nvm
 export PROJECT_DIR=~/src
 export EDITOR=emacs
+export EMAIL=renaudgermain@motivateco.com
 
 # export LESSOPEN # cat some.json | python -m json.tool
 

@@ -1,9 +1,13 @@
-alias ls='ls -G'
+alias br='tail -15 log/build.log'
+alias cp='cp -i'
 alias e='emacs'
-alias rm='rm -i'
 alias grep="grep --exclude=TAGS --exclude='*.class' --color=always"
-alias tags='rm -f TAGS; find . -name "*.java" -print | xargs etags --append'
 alias less='less -R'
+alias ls='ls -G'
+alias mv='mv -i'
+alias mvn='MAVEN_OPTS=-Djansi.force=true mvn -B --log-file log/build.log -Dstyle.color=always --global-settings .m2/settings.xml' # https://issues.apache.org/jira/browse/MNG-6380
+alias rm='rm -i'
+alias tags='rm -f TAGS; find . -name "*.java" -print | xargs etags --append'
 
 HISTFILE=~/.zhistory
 HISTSIZE=SAVEHIST=10000
