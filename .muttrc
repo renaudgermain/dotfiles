@@ -1,7 +1,7 @@
 set from="Renaud Germain <${EMAIL}>"
 set imap_user="${EMAIL}"
 set smtp_url="smtps://${EMAIL}@smtp.gmail.com:465/"
-# set smtp_authenticators="gssapi:login"
+set smtp_authenticators="gssapi:login"
 set folder=imaps://imap.gmail.com/ # TODO enable imap access in gmail's options?
 # set folder=imaps://username@imap.gmail.com/ # ... for multiple accounts
 set spoolfile=+Inbox
@@ -9,10 +9,10 @@ set postponed=+[Gmail]/Drafts
 set header_cache = ~/.cache/mutt
 set message_cachedir = ~/.cache/mutt
 
-unset help recall markers confirmappend collapse_unread move pager_format ascii_chars wait_key
+unset help recall markers confirmappend collapse_unread move pager_format ascii_chars wait_key record
 set envelope_from fast_reply include status_on_top pager_stop pgp_replyencrypt copy use_from
 set pgp_autosign reply_to smart_wrap # pipe_decode autoedit auto_tag delete
-set rfc2047_parameters mime_forward
+set rfc2047_parameters mime_forward ssl_force_tls
 
 set status_format="[Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?]%> (%P)"
 set date_format="%b%d %H:%M"
@@ -23,7 +23,6 @@ set query_command="abook --datafile ~/.abook/addressbook --mutt-query '%s'"
 set charset="utf-8"
 set send_charset="utf-8"
 set quote_regexp="^([ \t]*[A-Za-z]*>)+"
-set sendmail="/usr/bin/msmtp"
 # dsn_notify et dsn_return pour les accuses de reception
 set ispell="aspell -c --mode=email --lang=fr"
 
