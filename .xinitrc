@@ -12,7 +12,7 @@ case $(uname):$(tty) in
         exec ssh-agent cwm
         ;;
     Linux:/dev/tty1)
-        exec qemu-system-x86_64 -full-screen -no-frame -m 2048 -machine pc,accel=kvm -cpu kvm64 -enable-kvm -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22 -device e1000,netdev=mynet0 -smp 4 ~/.qemu/gulf.img
+        exec qemu-system-x86_64 -full-screen -no-frame -m 4G -machine pc,accel=kvm -cpu kvm64 -enable-kvm -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22 -device e1000,netdev=mynet0 -smp 4 ~/.qemu/gulf.img
         ;;
     Linux:*)
         feh --bg-center --no-fehbh ~/.wallpaper.jpg
