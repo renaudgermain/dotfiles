@@ -49,6 +49,16 @@
       javascript-mode      '((lambda () (linum-mode 1)))
       haskell-mode-hook    '((lambda () (linum-mode 1)))
       html-mode-hook       '((lambda () (linum-mode 1)))
+      html-mode-hook       '((lambda ()
+                               (linum-mode 1)
+                               (set (make-local-variable 'sgml-basic-offset) 4)))
+      nxml-mode-hook       '((lambda () (linum-mode 1)))
+      java-mode-hook       '((lambda () (linum-mode 1)
+                               (setq indent-tabs-mode t)
+                               (setq c-offsets-alist
+                                     (append '((arglist-intro . +) (case-label . +))
+                                             c-offsets-alist))
+                               (setq c-basic-offset 2)))
       css-mode-hook        '((lambda () (linum-mode 1)))
       go-mode-hook         '((lambda () (linum-mode 1)))
       mail-mode-hook       '(auto-fill-mode)
@@ -66,12 +76,17 @@
                 ("^\/etc\/"           . shell-script-mode)
                 ("\\.py$"             . python-mode)
                 ("\\.php$"            . html-mode)
+                ("\\.org$"            . org-mode)
+                ("\\.sql\\.ftl$"      . sql-mode)
                 )
               auto-mode-alist
               '(
-                ("^\/home\/rcog\/\\." . shell-script-mode)
+                ((concat "^" (replace-regexp-in-string "/" "\\/" (expand-file-name "~/") nil 1 nil nil) "\\\\.")
+                 . shell-script-mode)
                 )
               ))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace);; TODO indent file, update copyright, remove unused imports, TODO disable when editing liquidbase changesets (e.g. update_MAIN.xml)
 
 ;; TODO java format on save
 
@@ -92,3 +107,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(defun display-ansi-colors ()
+  (interactive)
+  (ansi-color-apply-on-region (point-min) (point-max)))
