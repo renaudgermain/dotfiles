@@ -36,7 +36,8 @@ folder-hook sent                       set sort="date-sent"
 folder-hook !sent                      set sort="threads"
 folder-hook 'debian-security|bugtraq'  set pager_index_lines=10
 
-bind pager q quit
+bind pager q  quit
+bind pager  previous-line # correct key name, per http://www.mutt.org/doc/manual/#menus, doesn't work
 
 macro index               \cV     <next-page>
 macro index               \ev     <previous-page>
