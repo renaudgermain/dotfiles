@@ -1,4 +1,4 @@
-#! /bin/bash 
+#!/bin/sh
 
 #   Copyright (c) 1998  Martin Schulze <joey@debian.org>
 #   Slightly modified by:
@@ -43,35 +43,29 @@ file_prgs="/usr/bin/wget:XT /usr/bin/snarf:XT"
 # the command line in getprg)
 XTERM=/usr/bin/x-terminal-emulator
 
-
-###########################################################################
-# Change below this at your own risk
-###########################################################################
-function getprg()
-{
+function getprg {
     local ele tag prog
 
-    for ele in $*
-    do
-	tag=${ele##*:}
-	prog=${ele%%:*}
-	if [ -x $prog ]; then
-	    case $tag in
-	    PW) [ -n "$DISPLAY" ] && echo "P:$prog" && return 0
-	    	;;
-	    XW)
-		[ -n "$DISPLAY" ] && echo "X:$prog" && return 0
-		;;
-	    XT)
-		[ -n "$DISPLAY" ] && [ -x "$XTERM" ] && \
-		    echo "X:$XTERM -e $prog" && return 0
-		echo "$prog" && return 0
-		;;
-	    VT)
-		echo "$prog" && return 0
-		;;
-	    esac
-	fi
+    for ele in $*; do
+	     tag=${ele##*:}
+	     prog=${ele%%:*}
+	     if [ -x $prog ]; then
+	         case $tag in
+	             PW) [ -n "$DISPLAY" ] && echo "P:$prog" && return 0
+	    	           ;;
+	             XW)
+		              [ -n "$DISPLAY" ] && echo "X:$prog" && return 0
+		              ;;
+	             XT)
+		              [ -n "$DISPLAY" ] && [ -x "$XTERM" ] && \
+		                  echo "X:$XTERM -e $prog" && return 0
+		              echo "$prog" && return 0
+		              ;;
+	             VT)
+		              echo "$prog" && return 0
+		              ;;
+	         esac
+	     fi
     done
 }
 
@@ -82,9 +76,9 @@ type=${url%%:*}
 if [ "$url" = "$type" ]; then
     type=${url%%.*}
     case $type in
-    www|web|www[1-9])
-	type=http
-	;;
+        www|web|www[1-9])
+	         type=http
+	         ;;
     esac
     url=$type://$url
 fi
@@ -92,51 +86,51 @@ fi
 if [ "$type" = "ftp" ]; then
     filename=${url##*/}
     if [ $filename ]; then
-    	echo "Is \"$filename\" a file? (y/N)";
-    	read x
-    	case $x in 
-    	y|Y)
-        	type=file
-		;;
-    	*)
-    		;;
-    	esac
+    	  echo "Is \"$filename\" a file? (y/N)";
+    	  read x
+    	  case $x in 
+    	      y|Y)
+        	       type=file
+		          ;;
+    	      *)
+    		       ;;
+    	  esac
     fi
 fi
 
 case $type in
-https)
-    prg=`getprg $https_prgs`
-    ;;
-http)
-    prg=`getprg $http_prgs`
-    ;;
-ftp)
-    prg=`getprg $ftp_prgs`
-    ;;
-mailto)
-    prg=`getprg $mailto_prgs`
-    ;;
-gopher)
-    prg=`getprg $gopher_prgs`
-    ;;
-file)
-    prg=`getprg $file_prgs`
-    ;;
-*)
-    echo "Unknown URL type.  Please report URL and viewer to"
-    echo "urlview@packages.debian.org."
-    echo -n "Press enter to continue.."; read x
-    exit
-    ;;
+    https)
+        prg=`getprg $https_prgs`
+        ;;
+    http)
+        prg=`getprg $http_prgs`
+        ;;
+    ftp)
+        prg=`getprg $ftp_prgs`
+        ;;
+    mailto)
+        prg=`getprg $mailto_prgs`
+        ;;
+    gopher)
+        prg=`getprg $gopher_prgs`
+        ;;
+    file)
+        prg=`getprg $file_prgs`
+        ;;
+    *)
+        echo "Unknown URL type.  Please report URL and viewer to"
+        echo "urlview@packages.debian.org."
+        echo -n "Press enter to continue.."; read x
+        exit
+        ;;
 esac
 
 if [ -n "$prg" ]; then
-   if [ "${prg%:*}" = "P" ]; then
-    nohup ${prg#*:} $url 2>/dev/null 1>/dev/null &
-   elif [ "${prg%:*}" = "X" ]; then
-    ${prg#*:} $url 2>/dev/null &
-   else
-    $prg $url
-   fi
+    if [ "${prg%:*}" = "P" ]; then
+        nohup ${prg#*:} $url 2>/dev/null 1>/dev/null &
+    elif [ "${prg%:*}" = "X" ]; then
+        ${prg#*:} $url 2>/dev/null &
+    else
+        $prg $url
+    fi
 fi
