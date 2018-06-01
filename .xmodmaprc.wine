@@ -1,6 +1,0 @@
-clear control
-clear mod4
-
-add mod4 = Super_R
-add mod4 = Super_L
-add control = Control_L

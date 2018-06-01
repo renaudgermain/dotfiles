@@ -1,3 +1,0 @@
-function m = tr(m)
-   m = flipud(rot90(m));
-end
