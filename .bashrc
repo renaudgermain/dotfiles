@@ -90,7 +90,6 @@ if [ -n "$DISPLAY" ]; then
 fi
 
 # ps -C mediatomb > /dev/null || mediatomb --interface wlan1 --daemon --logfile $HOME/.mediatomb/mediatomb.log
-fetchmail
 
 _game() {
     local cur opts
