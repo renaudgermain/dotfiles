@@ -1,0 +1,33 @@
+# git clone git@github.com:renaudgermain/dotfiles.git
+
+case $(whoami):$(hostname) in
+    root:alpha)
+        pacman -Syu xorg-xrandr xorg-xdpyinfo mesa-demos alsa-utils git xorg-server ratpoison \
+               mpv rxvt-unicode xorg-{xsetver,xsetroot,xset,xinit}
+        echo "TODO add rcog to groups audio, video"
+        echo "TODO replace grub by syslinux w/ autoselect"
+        echo "TODO add 9p mount to fstab"
+        systemctl enable dhcpcd
+        ;;
+    root:delta)
+        apt-get install -y virt-viewer
+    ;;
+    root:gulf)
+        echo 'https://openbsd.mirror.netelligent.ca/pub/OpenBSD' > /etc/installurl
+        pkg_add abook emacs-no_x11 feh firefox git go mpg321 mpv mupdf \
+                mutt-gpgme-sasl rxvt-unicode surf surfraw tabbed urlview
+        # TODO echo '10.0.2.2        alpha' >> /etc/hosts
+        echo '10.0.2.2        delta' >> /etc/hosts
+        ;;
+    rcog:gulf)
+        echo "TODO generate ssh keys"
+        echo "TODO install gdrive & sync 2 files" # cronjob?
+        # - gdrive (shasum 54be1d38b9014c6a8de5d71233cd6f208c27ac1c)
+        echo "TODO get wallpaper"
+        mkdir $HOME/usr/bin
+        chmod 700 $HOME/usr/bin/gdrive-openbsd-x64
+        ln -sf gdrive-openbsd-x64 $HOME/usr/bin/gdrive
+        ln -sf /usr/local/bin/surf $HOME/usr/bin/x-www-browser
+        mkdir -p $HOME/.cache/mutt
+        ;;
+esac
