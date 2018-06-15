@@ -80,10 +80,7 @@
                 ("\\.sql\\.ftl$"      . sql-mode)
                 )
               auto-mode-alist
-              '(
-                ((concat "^" (replace-regexp-in-string "/" "\\/" (expand-file-name "~/") nil 1 nil nil) "\\\\.")
-                 . shell-script-mode)
-                )
+              (list (cons (concat "^" (expand-file-name "~/") "\\.") 'shell-script-mode))
               ))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace);; TODO indent file, update copyright, remove unused imports, TODO disable when editing liquidbase changesets (e.g. update_MAIN.xml)
