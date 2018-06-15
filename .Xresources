@@ -8,13 +8,13 @@ URxvt*internalBorder: 0
        URxvt*shading: 20
    URxvt*transparent: True
 !	      URxvt*font: -misc-fixed-medium-r-normal--14-140-75-75-c-90-iso10646-1
-          URxvt*font: xft:Inconsolata:pixelsize=12
+          URxvt*font: xft:Inconsolata:pixelsize=14
       URxvt*iso14755: false
    URxvt*iso14755_52: false
 
         URxvt*color4: #4444ff
        URxvt*color12: #4444ff
-      URxvt*geometry: 128x51+0+0
+      URxvt*geometry: 180x60+0+0
 
 ! TODO copy ~/.emacs.d/cyberpunk-theme.el colors to this one:
 ! #include "/home/rcog/.Xdefaults.c.vimbrant"
