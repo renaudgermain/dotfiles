@@ -14,7 +14,7 @@ URxvt*internalBorder: 0
 
         URxvt*color4: #4444ff
        URxvt*color12: #4444ff
-      URxvt*geometry: 180x60+0+0
+      URxvt*geometry: 160x52+0+0
 
 ! TODO copy ~/.emacs.d/cyberpunk-theme.el colors to this one:
 ! #include "/home/rcog/.Xdefaults.c.vimbrant"
