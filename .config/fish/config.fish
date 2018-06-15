@@ -33,14 +33,7 @@ function fish_prompt --description 'Write out the prompt'
 end
 
 function startvm --description "Start a virtual machine"
-   # qemu-system-x86_64 -m 2048 -hda /home/rcog/.qemu/gulf.img -enable-kvm -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22 -device e1000,netdev=mynet0 -smp 2
-   set -l image ~/.qemu/$argv[1].img
-   set -e argv[1]
-   if test -f $image
-      qemu-system-x86_64 $image -machine type=pc,accel=kvm -m 512M -cpu host -enable-kvm -vga std -netdev user,id=network0 -device rtl8139,netdev=network0 $argv
-   else
-      echo "machine `$argv[1]` doesn't exist"
-   end
+   startx $HOME/.xinitrc $argv[1]
 end
 
 function aide; echo -e "Changer configuration clavier: Caps Lock\nChanger fenêtres: Control-J\nNouvelle fenêtre de navigation privée dans Firefox: Alt-f w"; end
