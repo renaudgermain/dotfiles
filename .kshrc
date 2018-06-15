@@ -11,8 +11,8 @@ alias wp='wikipedia'
 export PAGER='less'
 export EDITOR='emacs'
 export PS1="[34m[[33m\u@\h [32m\w[34m]▶[0m "
-export SENDER_WIDTH=$((COLUMNS - 100))
-export SUBJECT_WIDTH=$((COLUMNS - 50))
+export SENDER_WIDTH=$((COLUMNS - 125))
+export SUBJECT_WIDTH=$((COLUMNS - 60))
 export SURFRAW_browser=x-www-browser
 
 bind -m '^L'=clear'^J'
