@@ -16,7 +16,7 @@ case $(whoami):$(hostname) in
     ;;
     root:gulf)
         echo 'https://openbsd.mirror.netelligent.ca/pub/OpenBSD' > /etc/installurl
-        pkg_add abook emacs-no_x11 feh firefox git go mpg321 mpv mupdf \
+        pkg_add abook emacs-no_x11 feh firefox ghc git go mpg321 mpv mupdf \
                 mutt-gpgme-sasl rxvt-unicode surf surfraw tabbed urlview
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts

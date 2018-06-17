@@ -18,7 +18,7 @@ case $(hostname):$1 in
              -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22 -device e1000,netdev=mynet0 -smp 4 -vga vmware -soundhw ac97 ~/.qemu/gulf.img
         ;;
     delta:)
-        feh --bg-center --no-fehbh ~/.wallpaper.jpg
+        feh --bg-center --no-fehbg ~/.wallpaper.jpg
         xrdb ~/.Xresources # -merge ?
         xsetroot -cursor_name left_ptr
         xset r rate 500 90
@@ -30,13 +30,13 @@ case $(hostname):$1 in
         exec qemu-system-x86_64 -full-screen -no-frame ~/.qemu/echo.img -machine type=pc,accel=kvm -m 1G -cpu host -enable-kvm \
              -vga virtio -netdev user,id=network0 -device rtl8139,netdev=network0
         ;;
-    gulf:)
+    gulf*)
+        xrandr --output default --mode 1440x900
         export LC_CTYPE="en_US.UTF-8"
         xset +fp /usr/local/share/fonts/inconsolata
         xrdb ~/.Xresources # -merge ?
         feh --bg-center --no-fehbg ~/.wallpaper.jpg
         setxkbmap -layout us,ca -variant ,multix -option grp:caps_toggle -option ctrl:swap_lwin_lctl -option ctrl:swap_rwin_rctl
-        xrandr --output default --mode 1440x900
         xset r rate 500 90
         export TABBED_XID=$(tabbed -g 1024x768+0+0 -d)
         urxvt &
