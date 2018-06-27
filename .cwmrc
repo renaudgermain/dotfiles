@@ -1,3 +1,4 @@
+unbind-key all
 borderwidth 0
 sticky yes
 
