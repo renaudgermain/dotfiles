@@ -13,27 +13,37 @@ case $(whoami):$(hostname) in
         ;;
     root:delta)
         apt-get install -y virt-viewer
-    ;;
+        ;;
     root:gulf)
         echo 'https://openbsd.mirror.netelligent.ca/pub/OpenBSD' > /etc/installurl
         pkg_add abook emacs-no_x11 feh firefox ghc git go mpg321 mpv mupdf \
                 mutt-gpgme-sasl rxvt-unicode surf surfraw tabbed urlview
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
+        # echo 'dhcp' > /etc/hostname.em0 # required?
         ;;
     rcog:gulf)
+        mkdir $HOME/usr/bin
         echo "TODO generate ssh keys"
         curl -L 'https://docs.google.com/uc?id=0B3X9GlR6EmbnSy1JdFlHdUYyaGs&export=download' \
              --output $HOME/usr/bin/gdrive-openbsd-x64
         test $(sha1 -q $HOME/usr/bin/gdrive-openbsd-x64) = 54be1d38b9014c6a8de5d71233cd6f208c27ac1c
-        gdrive about # visit url, get code, paste code
-        gdrive download 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e # .todo.org
-        echo "TODO sync notes.org" # cronjob?
-        echo "TODO get wallpaper"
-        mkdir $HOME/usr/bin
         chmod 700 $HOME/usr/bin/gdrive-openbsd-x64
         ln -sf gdrive-openbsd-x64 $HOME/usr/bin/gdrive
+        gdrive about # visit url, get code, paste code
+        gdrive download 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e # .todo.org
+        gdrive download 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 --path doc/RecettesCuisine.org
+        gdrive download 1015zVq55bI7ByjQAfaRfMRh0wXyeq4VS --path doc/notes.org
+        crontab - <<EOF
+@daily gdrive update 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e .todo.org
+@daily gdrive update 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 doc/RecettesCuisine.org
+@daily gdrive update 1015zVq55bI7ByjQAfaRfMRh0wXyeq4VS doc/notes.org
+EOF
+        echo "TODO sync notes.org" # cronjob?
+        echo "TODO get wallpaper"
         ln -sf /usr/local/bin/surf $HOME/usr/bin/x-www-browser
         mkdir -p $HOME/.cache/mutt
+        echo "TODO generate mutt password file"
+        echo "TODO browser.tabs.loadDivertedInBackground = true"
         ;;
 esac
