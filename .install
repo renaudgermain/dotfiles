@@ -17,10 +17,14 @@ case $(whoami):$(hostname) in
     root:gulf)
         echo 'https://openbsd.mirror.netelligent.ca/pub/OpenBSD' > /etc/installurl
         pkg_add abook emacs-no_x11 feh firefox ghc git go mpg321 mpv mupdf \
-                mutt-gpgme-sasl rxvt-unicode surf surfraw tabbed urlview
+                mutt-gpgme-sasl rxvt-unicode sshfs-fuse surf surfraw tabbed urlview
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
         # echo 'dhcp' > /etc/hostname.em0 # required?
+        cat <<EOF > /etc/rc.local
+sshfs rcog@delta:/home/rcog/media /home/rcog/media
+sshfs rcog@delta:/home/rcog/doc   /home/rcog/doc
+EOF
         ;;
     rcog:gulf)
         mkdir $HOME/usr/bin
