@@ -11,6 +11,7 @@ alias wp='wikipedia'
 
 export PAGER='less'
 export EDITOR='emacs'
+export MANPATH=":$HOME/usr/share/man"
 export NQDIR="$HOME/.cache/nq"
 export PS1="[34m[[33m\u@\h [32m\w[34m]▶[0m "
 export SENDER_WIDTH=$((COLUMNS - 125))
