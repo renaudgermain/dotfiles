@@ -4,12 +4,14 @@ alias e='emacs'
 alias off='ssh delta env DISPLAY=:0 xset dpms force off'
 alias cp='cp -i'
 alias mv='mv -i'
+alias pl='nq -c mpg321'
 alias rm='rm -i'
 alias tmux='tmux -u'
 alias wp='wikipedia'
 
 export PAGER='less'
 export EDITOR='emacs'
+export NQDIR="$HOME/.cache/nq"
 export PS1="[34m[[33m\u@\h [32m\w[34m]▶[0m "
 export SENDER_WIDTH=$((COLUMNS - 125))
 export SUBJECT_WIDTH=$((COLUMNS - 60))

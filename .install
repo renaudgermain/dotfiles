@@ -25,6 +25,7 @@ case $(whoami):$(hostname) in
 /usr/local/bin/sshfs rcog@delta:/home/rcog/media /home/rcog/media
 /usr/local/bin/sshfs rcog@delta:/home/rcog/doc   /home/rcog/doc
 EOF
+        rcctl set sndiod flags -mplay
         ;;
     rcog:gulf)
         mkdir $HOME/usr/bin
@@ -49,5 +50,7 @@ EOF
         mkdir -p $HOME/.cache/mutt
         echo "TODO generate mutt password file"
         echo "TODO browser.tabs.loadDivertedInBackground = true"
+        git clone https://github.com/chneukirchen/nq.git /tmp/nq
+        make -C /tmp/nq PREFIX=~/usr install
         ;;
 esac
