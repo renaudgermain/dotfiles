@@ -38,8 +38,9 @@ case $(hostname):$1 in
         feh --bg-center --no-fehbg ~/.wallpaper.jpg
         setxkbmap -layout us,ca -variant ,multix -option grp:caps_toggle -option ctrl:swap_lwin_lctl -option ctrl:swap_rwin_rctl
         xset r rate 500 90
-        export TABBED_XID=$(tabbed -g 1024x768+0+0 -d)
+        # export TABBED_XID=$(tabbed -g 1440x900+0+0 -d)
         urxvt &
+        firefox &
         exec ssh-agent cwm
         ;;
     *)
