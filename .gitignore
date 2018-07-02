@@ -7,16 +7,12 @@
 .emacs.d/elpa
 .emacs.d/ido.last
 .emacs.d/places
-.fetchmail.log
-.fetchmail.pid
+.gdrive
 .ghc/ghci_history
 .gimp-2.8/
 .lesshst
 .log
 .mail
-.moosic/player_log
-.moosic/saved_state
-.moosic/server_log
 .mozilla/
 .password-store
 .qemu/
@@ -26,7 +22,6 @@
 .surf/cookies.txt
 .todo.org*
 .uplink
-.vimperator
 .wine
 .wine64
 .xmonad/xmonad-x86_64-linux
@@ -35,7 +30,6 @@
 .xmonad/xmonad.o
 .xsession-errors
 .zhistory
-Applications
 Desktop
 Library
 bak
