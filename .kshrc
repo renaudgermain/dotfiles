@@ -1,7 +1,7 @@
 alias ls='ls -F'
 alias su='su -'
 alias e='emacs'
-alias off='ssh delta env DISPLAY=:0 xset dpms force off'
+alias off="ssh delta env DISPLAY=$(ssh delta ps aux | grep gulf | grep xserver | sed -e 's/.* \(:[0-9]\) .*/\1/') xset dpms force off"
 alias cp='cp -i'
 alias mv='mv -i'
 alias pl='nq -c mpg321'
