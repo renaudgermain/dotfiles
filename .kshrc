@@ -20,6 +20,8 @@ export SURFRAW_browser=x-www-browser
 
 bind -m '^L'='^U'clear'^J^Y'
 
+function wttr { curl "http://wttr.in/${1:-montreal}?m"; }
+
 # IFS='
 # '
 # set -A complete_pass init ls find show grep insert edit generate rm mv cp git help version \
