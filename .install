@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
-# git clone git@github.com:renaudgermain/dotfiles.git
+# git clone --bare https://github.com/renaudgermain/dotfiles.git .git
+# git config core.bare false
+# git reset --hard
 
 case $(whoami):$(hostname) in
     root:alpha)
