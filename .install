@@ -4,12 +4,18 @@
 
 case $(whoami):$(hostname) in
     root:alpha)
-        pacman -Syu xorg-xrandr xorg-xdpyinfo mesa-demos alsa-utils git xorg-server ratpoison \
-               mpv rxvt-unicode xorg-{xsetver,xsetroot,xset,xinit}
+        pacman -Syu xorg-xrandr xorg-xdpyinfo mesa-demos alsa-utils git ratpoison \
+               mpv rxvt-unicode xorg-{xserver,xsetver,xsetroot,xset,xinit,xdm}
         echo "TODO add rcog to groups audio, video"
         echo "TODO replace grub by syslinux w/ autoselect"
-        echo "TODO add 9p mount to fstab"
+        echo "doc	/home/rcog/doc	9p	trans=virtio,version=9p2000.L	0	0" >> /etc/fstab
+        echo "media	/home/rcog/media	9p	trans=virtio,version=9p2000.L	0	0" >> /etc/fstab
+        mkdir /home/rcog/{doc,media}
         systemctl enable dhcpcd
+        systemctl enable xdm.service
+        ;;
+    rcog:alpha)
+        ln -s .xinitrc ~/.xsession
         ;;
     root:delta)
         apt-get install -y virt-viewer
@@ -40,11 +46,10 @@ EOF
         gdrive download 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 --path doc/RecettesCuisine.org
         gdrive download 1015zVq55bI7ByjQAfaRfMRh0wXyeq4VS --path doc/notes.org
         crontab - <<EOF
-@daily $HOME/usr/bin/gdrive update 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e .todo.org
-@daily $HOME/usr/bin/gdrive update 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 doc/RecettesCuisine.org
-@daily $HOME/usr/bin/gdrive update 1015zVq55bI7ByjQAfaRfMRh0wXyeq4VS doc/notes.org
+@daily    $HOME/usr/bin/gdrive update 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 doc/RecettesCuisine.org
+@daily    $HOME/usr/bin/gdrive update 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e .todo.org
+5 0 * * * $HOME/usr/bin/gdrive update 1015zVq55bI7ByjQAfaRfMRh0wXyeq4VS doc/notes.org
 EOF
-        echo "TODO sync notes.org" # cronjob?
         echo "TODO get wallpaper"
         ln -sf /usr/local/bin/surf $HOME/usr/bin/x-www-browser
         mkdir -p $HOME/.cache/mutt

@@ -1,16 +1,19 @@
 case $(hostname):$1 in
     alpha:)
-        xrandr --output Virtual-1 --mode 1440x900
+        xrandr --output qxl-0 --mode 1440x900
+        xrdb ~/.Xresources
+        exec ratpoison
         ;;
     delta:alpha)
         export QEMU_AUDIO_DRV=alsa
         qemu-system-x86_64 -m 2G -machine type=pc,accel=kvm -cpu host -enable-kvm \
             -vga qxl -hda ~/.qemu/alpha.img -smp 2 -netdev user,id=network0,hostfwd=tcp:127.0.0.1:8922-:22 \
-            -device rtl8139,netdev=network0 -virtfs local,id=home,path=/home/rcog,security_model=none,mount_tag=home \
+            -device rtl8139,netdev=network0 -virtfs local,id=home,path=/home/rcog/media,security_model=none,mount_tag=media \
+            -virtfs local,id=doc,path=/home/rcog/doc,security_model=none,mount_tag=doc \
             -soundhw ac97 -device virtio-serial-pci -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0 \
             -chardev spicevmc,id=spicechannel0,name=vdagent -spice unix,addr=/tmp/vm_spice.socket,disable-ticketing \
             -display none -daemonize # -display sdl,gl=on
-        exec remote-viewer spice+unix:///tmp/vm_spice.socket
+        exec remote-viewer --full-screen spice+unix:///tmp/vm_spice.socket
         ;;
     delta:gulf)
         export QEMU_AUDIO_DRV=alsa
