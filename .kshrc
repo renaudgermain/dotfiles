@@ -23,6 +23,7 @@ export SURFRAW_browser=x-www-browser
 bind -m '^L'='^U'clear'^J^Y'
 
 function wttr { curl "http://wttr.in/${1:-montreal}?m"; }
+function i { for i in "$@"; do mediainfo --Inform=file://$HOME/.mediainforc "$i" | expand -30; done; }
 
 # IFS='
 # '
