@@ -51,6 +51,7 @@ EOF
 @daily    $HOME/usr/bin/gdrive update 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 doc/RecettesCuisine.org
 @daily    $HOME/usr/bin/gdrive update 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e .todo.org
 5 0 * * * $HOME/usr/bin/gdrive update 1015zVq55bI7ByjQAfaRfMRh0wXyeq4VS doc/notes.org
+9 0 * * * $HOME/usr/bin/gdrive update 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh .abook/addressbook
 EOF
         echo "TODO get wallpaper"
         ln -sf /usr/local/bin/surf $HOME/usr/bin/x-www-browser

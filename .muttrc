@@ -19,7 +19,7 @@ set date_format="%b%d %H:%M"
 set index_format="%-12D  %-${SENDER_WIDTH}.${SENDER_WIDTH}L  %-${SUBJECT_WIDTH}.${SUBJECT_WIDTH}s  %> %?M?(%M)?"
 set forward_format="Fwd: %s"
 
-set query_command="ssh delta abook --datafile ~/.abook/addressbook --mutt-query '%s'"
+set query_command="abook --datafile ~/.abook/addressbook --mutt-query '%s'"
 set charset="utf-8"
 set send_charset="utf-8"
 set quote_regexp="^([ \t]*[A-Za-z]*>)+"
