@@ -36,6 +36,7 @@ EOF
         rcctl set sndiod flags -mplay
         ;;
     rcog:gulf)
+        umask 077
         mkdir $HOME/usr/bin
         echo "TODO generate ssh keys"
         curl -L 'https://docs.google.com/uc?id=0B3X9GlR6EmbnSy1JdFlHdUYyaGs&export=download' \
@@ -55,8 +56,16 @@ EOF
 EOF
         echo "TODO get wallpaper"
         ln -sf /usr/local/bin/surf $HOME/usr/bin/x-www-browser
+        gpg2 --receive-keys 80BF439C
+        read ok?'copy GPG private key to ~/.gnupg/private.key and press enter once done'
+        gpg2 --import ~/.gnupg/private.key
+        rm -P ~/.gnupg/private.key
         mkdir -p $HOME/.cache/mutt
         echo "TODO generate mutt password file"
+        echo "\techo \"set imap_pass=\"password\"\nset smtp_pass=\"password\" > ~/.cache/mutt/passwords"
+        echo "\tgpg2 -e ~/.cache/mutt/passwords"
+        echo "\trm -P ~/.cache/mutt/passwords"
+        read ok?'press enter once done'
         echo "TODO browser.tabs.loadDivertedInBackground = true"
         git clone https://github.com/chneukirchen/nq.git /tmp/nq
         make -C /tmp/nq PREFIX=~/usr install

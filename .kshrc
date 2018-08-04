@@ -20,6 +20,8 @@ export SENDER_WIDTH=$((COLUMNS - 125))
 export SUBJECT_WIDTH=$((COLUMNS - 60))
 export SURFRAW_browser=x-www-browser
 
+umask 077
+
 bind -m '^L'='^U'clear'^J^Y'
 
 function wttr { curl "http://wttr.in/${1:-montreal}?m"; }
