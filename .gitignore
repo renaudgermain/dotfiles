@@ -1,5 +1,6 @@
 .Trash
 .Xauthority
+.abook
 .bash_history
 .cache
 .dmenu_cache

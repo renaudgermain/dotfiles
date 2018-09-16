@@ -24,11 +24,12 @@ case $(whoami):$(hostname) in
         ;;
     root:gulf)
         echo 'https://openbsd.mirror.netelligent.ca/pub/OpenBSD' > /etc/installurl
-        pkg_add abook emacs-no_x11 feh firefox ghc git go mpg321 mpv mupdf \
-                mutt-gpgme-sasl rxvt-unicode sshfs-fuse surf surfraw tabbed urlview
+        # pkg_info -mz
+        pkg_add ImageMagick abook emacs-no_x11 eyeD3 feh firefox ghc git go mediainfo \
+                mpg321 mpv mupdf mutt-gpgme-sasl rxvt-unicode sshfs-fuse surfraw unzip urlview
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
-        # echo 'dhcp' > /etc/hostname.em0 # required?
+        echo 'dhcp' > /etc/hostname.re0
         cat <<EOF > /etc/rc.local
 /usr/local/bin/sshfs rcog@delta:/home/rcog/media /home/rcog/media
 /usr/local/bin/sshfs rcog@delta:/home/rcog/doc   /home/rcog/doc
@@ -37,7 +38,7 @@ EOF
         ;;
     rcog:gulf)
         umask 077
-        mkdir $HOME/usr/bin
+        mkdir $HOME/usr/bin $HOME/.abook
         echo "TODO generate ssh keys"
         curl -L 'https://docs.google.com/uc?id=0B3X9GlR6EmbnSy1JdFlHdUYyaGs&export=download' \
              --output $HOME/usr/bin/gdrive-openbsd-x64
@@ -48,6 +49,7 @@ EOF
         gdrive download 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e # .todo.org
         gdrive download 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 --path doc/RecettesCuisine.org
         gdrive download 1015zVq55bI7ByjQAfaRfMRh0wXyeq4VS --path doc/notes.org
+        gdrive download 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh --path .abook/addressbook
         crontab - <<EOF
 @daily    $HOME/usr/bin/gdrive update 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 doc/RecettesCuisine.org
 @daily    $HOME/usr/bin/gdrive update 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e .todo.org
@@ -55,7 +57,11 @@ EOF
 9 0 * * * $HOME/usr/bin/gdrive update 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh .abook/addressbook
 EOF
         echo "TODO get wallpaper"
-        ln -sf /usr/local/bin/surf $HOME/usr/bin/x-www-browser
+        echo <<EOF > $HOME/usr/bin/x-www-browser
+#!/bin/sh -e
+# /bin/sh -c "/usr/local/bin/surf -e $TABBED_XID $1 > /dev/null &"
+firefox $1
+EOF
         gpg2 --receive-keys 80BF439C
         read ok?'copy GPG private key to ~/.gnupg/private.key and press enter once done'
         gpg2 --import ~/.gnupg/private.key
@@ -63,9 +69,9 @@ EOF
         mkdir -p $HOME/.cache/mutt
         echo "TODO generate mutt password file"
         echo "\techo \"set imap_pass=\"password\"\nset smtp_pass=\"password\" > ~/.cache/mutt/passwords"
+        read ok?'press enter once done'
         echo "\tgpg2 -e ~/.cache/mutt/passwords"
         echo "\trm -P ~/.cache/mutt/passwords"
-        read ok?'press enter once done'
         echo "TODO browser.tabs.loadDivertedInBackground = true"
         git clone https://github.com/chneukirchen/nq.git /tmp/nq
         make -C /tmp/nq PREFIX=~/usr install
