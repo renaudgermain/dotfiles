@@ -1,6 +1,7 @@
 .Trash
 .Xauthority
 .abook
+.aucat_cookie
 .bash_history
 .cache
 .dmenu_cache
@@ -23,6 +24,7 @@
 .surf/cookies.txt
 .todo.org*
 .uplink
+.wallpaper.jpg
 .wine
 .wine64
 .xmonad/xmonad-x86_64-linux
@@ -38,3 +40,6 @@ doc
 media
 src
 tmp
+usr/bin/[fnt]q
+usr/bin/gdrive*
+usr/share
