@@ -13,6 +13,9 @@ alias wp='wikipedia'
 
 export PAGER='less'
 export EDITOR='emacs'
+export HISTCONTROL=ignoredups:ignorespace
+export HISTFILE=~/.ksh_history
+export HISTSIZE=10000
 export MANPATH=":$HOME/usr/share/man"
 export NQDIR="$HOME/.cache/nq"
 export PS1="[34m[[33m\u@\h [32m\w[34m]▶[0m "
@@ -22,7 +25,7 @@ export SURFRAW_browser=x-www-browser
 
 umask 077
 
-bind -m '^L'='^U'clear'^J^Y'
+bind -m '^L'='^U clear^J^Y'
 
 function wttr { curl "http://wttr.in/${1:-montreal}?m"; }
 function i { for i in "$@"; do mediainfo --Inform=file://$HOME/.mediainforc "$i" | expand -30; done; }

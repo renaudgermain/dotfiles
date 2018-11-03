@@ -39,6 +39,10 @@ case $(whoami):$(hostname) in
 EOF
         rcctl set sndiod flags -mplay
         echo 'export PS1="\[[31m\][\u@\h \W]\\$ \[[0m\]"' >> /root/.profile
+        echo <<EOF > /etc/doas.conf
+permit nopass rcog cmd /usr/local/bin/sshfs args -o ssh_command="ssh -i /home/rcog/.ssh/id_rsa" rcog@delta:/home/rcog/doc /home/rcog/doc
+permit nopass rcog cmd /usr/local/bin/sshfs args -o ssh_command="ssh -i /home/rcog/.ssh/id_rsa" rcog@delta:/home/rcog/media /home/rcog/media
+EOF
         ;;
     rcog:gulf)
         umask 077
@@ -74,9 +78,10 @@ EOF
         read p?'mutt password:' # FIXME secure input
         echo "set imap_pass=\"$p\"\nset smtp_pass=\"$p\"" | gpg2 --encrypt --recipient 80BF439C > ~/.cache/mutt/passwords.gpg
         # might require restarting gpg-agent
-        echo "TODO browser.tabs.loadDivertedInBackground = true, uBlock origin, tridactyl"
+        echo "TODO browser.tabs.loadDivertedInBackground = true, uBlock origin, Tridactyl, Video Downloader professional"
         git clone https://github.com/chneukirchen/nq.git /tmp/nq
         make -C /tmp/nq PREFIX=~/usr install
-        echo "TODO (from delta) ssh rcog@127.0.0.1 -p 7922 cat ~/.ssh/id_rsa.pub >> .ssh/authorized_keys
+        echo "TODO (from delta) ssh rcog@127.0.0.1 -p 7922 cat ~/.ssh/id_rsa.pub >> .ssh/authorized_keys"
+        echo 'git clone ssh://delta:/home/rcog/src/euler/.git euler'
         ;;
 esac
