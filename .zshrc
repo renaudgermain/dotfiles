@@ -2,7 +2,7 @@ alias br='tail -50 log/build.log'
 alias cp='cp -i'
 alias e='emacs'
 alias grep="grep --exclude=TAGS --exclude='*.class' --color=always"
-alias less='less -R'
+alias less='less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init'
 alias ls='ls -G'
 alias mv='mv -i'
 alias mvn='MAVEN_OPTS=-Djansi.force=true mvn -B --log-file log/build.log -Dstyle.color=always --global-settings ~/.m2/settings.xml --fail-fast -DfailIfNoTests=false -Dmaven.test.failure.ignore=false' # https://issues.apache.org/jira/browse/MNG-6380
@@ -16,6 +16,7 @@ setopt sharehistory
 setopt extendedhistory
 setopt HIST_IGNORE_DUPS
 
+export LESSOPEN="|~/.lessfilter %s"
 umask 007
 
 function precmd {

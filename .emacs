@@ -81,6 +81,7 @@
                 ("\\.php$"            . html-mode)
                 ("\\.org$"            . org-mode)
                 ("\\.sql\\.ftl$"      . sql-mode)
+                ("\\.mustache"        . mustache-mode)
                 )
               auto-mode-alist
               (list (cons (concat "^" (expand-file-name "~/") "\\.") 'shell-script-mode))
@@ -101,7 +102,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode))))
+    (mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

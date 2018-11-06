@@ -11,7 +11,7 @@
 # Further Modifications by Thomas Schoepf <schoepf@debian.org>
 #
 # combined lessfile and lesspipe to avoid duplication of decode stage
-# shell is sure icky.  I'm real tempted to rewrite the whole thing in Perl 
+# shell is sure icky.  I'm real tempted to rewrite the whole thing in Perl
 #
 # Unfortunately, this means that I have filename dependencies sprinkled
 # throughout the code.  If you don't want lessfile to be called that,
@@ -120,7 +120,7 @@ if [ $# -eq 1 ] ; then
             if [ -x "`which isoinfo`" ]; then iso_list "$1"; fi ;;
 
          *.json)
-            cat "$1" | python -m json.tool;;
+            python -m json.tool "$1" | source-highlight -f esc --src-lang json;;
 
          *.bin|*.raw)
             if [ -x "`which isoinfo`" ]; then
@@ -165,6 +165,9 @@ if [ $# -eq 1 ] ; then
             elif [ -x "`which miniunzip`" ]; then miniunzip -l "$1";
             elif [ -x "`which miniunz`" ]; then miniunz -l "$1";
             else echo "No unzip, miniunzip or miniunz available"; fi ;;
+         *.xml)
+           source-highlight -f esc -i "$1"
+           ;;
 
          *.zoo)
             if [ -x "`which zoo`" ]; then zoo v "$1";
