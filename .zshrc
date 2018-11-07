@@ -16,7 +16,8 @@ setopt sharehistory
 setopt extendedhistory
 setopt HIST_IGNORE_DUPS
 
-export LESSOPEN="|~/.lessfilter %s"
+export LESSOPEN="|-~/.lessfilter %s"
+export PAGER='less -L'
 umask 007
 
 function precmd {

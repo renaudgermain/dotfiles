@@ -40,11 +40,6 @@ iso_list() {
 if [ $# -eq 1 ] ; then
    # we were called as LESSOPEN
 
-   # if the file doesn't exist, we don't do anything
-   if [ ! -r "$1" ]; then
-      exit 0
-   fi
-
    # generate filename for possible use by lesspipe
    umask 077
    if [ $BASENAME = $LESSFILE ]; then
@@ -173,7 +168,16 @@ if [ $# -eq 1 ] ; then
             if [ -x "`which zoo`" ]; then zoo v "$1";
             elif [ -x "`which unzoo`" ]; then unzoo -l "$1";
             else echo "No unzoo or zoo available"; fi ;;
+         -)
+           tmp=$(mktemp /tmp/${BASENAME}.XXXXXX)
+           cat - > $tmp
 
+           case $(/usr/local/opt/file-formula/bin/file $tmp) in
+             *JSON*)
+               python -m json.tool $tmp | source-highlight -f esc --src-lang json;;
+           esac
+           rm $tmp
+           ;;
       esac
    ) 2>/dev/null
 
