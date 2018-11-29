@@ -1,0 +1,34 @@
+#!/usr/bin/osascript
+# -*- apples -*-
+
+# built-in: 2880 x 1800 (1440 x 900), samsung: 1920x1080
+set monitorSize to {1920, 1080}
+set monitorPosition to {-100, -1080}
+set d to 2
+
+repeat with a in { "Slack", "Firefox", "Terminal", "IntelliJ IDEA" }
+    tell application a to activate
+
+    delay d
+
+    tell application "System Events"
+        keystroke "f" using {command down, control down}
+    end tell
+
+    delay d
+
+    tell application "System Events" # required?
+        tell process a
+            set size of windows to monitorSize
+            set position of windows to monitorPosition
+        end tell
+    end tell
+
+    delay d
+
+    tell application a to activate
+
+    tell application "System Events"
+        keystroke "f" using {command down, control down}
+    end tell
+end repeat
