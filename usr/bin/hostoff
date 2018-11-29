@@ -1,0 +1,2 @@
+#!/bin/sh
+ssh delta env DISPLAY=$(ssh delta ps aux | grep gulf | grep xserver | sed -e 's/.* \(:[0-9]\) .*/\1/') xset dpms force off

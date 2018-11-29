@@ -31,6 +31,7 @@ case $(hostname):$1 in
              -vga virtio -netdev user,id=network0 -device rtl8139,netdev=network0
         ;;
     gulf*)
+        . ~/.profile
         xrandr --output default --mode 1440x900
         export LC_CTYPE="en_US.UTF-8"
         xset +fp /usr/local/share/fonts/inconsolata
@@ -41,6 +42,7 @@ case $(hostname):$1 in
         # export TABBED_XID=$(tabbed -g 1440x900+0+0 -d)
         urxvt &
         firefox &
+        xidle &
         exec ssh-agent cwm
         ;;
     *)
