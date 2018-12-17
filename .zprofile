@@ -1,5 +1,5 @@
 export EDITOR=emacs
-export EMAIL=renaudgermain@motivateco.com
+export EMAIL=rgermain@lyft.com
 export FTK_SCRIPTS=$HOME/src/ftk-scripts
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export NVM_DIR=~/.nvm
