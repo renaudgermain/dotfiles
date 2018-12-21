@@ -35,7 +35,7 @@ function precmd {
   branch_name=${branch_name:-HEAD}
   RPROMPT="%F{blue}[$branch_name]%f"
 
-  for i in Documents Downloads Movies Music Pictures; do
+  for i in Applications Documents Downloads Movies Music Pictures; do
     if [ -d ~/$i ]; then
         /bin/rm -f ~/$i/.localized
         chmod -N ~/$i # https://discussions.apple.com/thread/2750331
@@ -47,4 +47,8 @@ function precmd {
 function nod { # notify on done
   $*
   osascript -e "display notification \"$*\" with title \"Command Done\""
+}
+
+function 2fa {
+  oathtool --base32 --totp $(lpass show $1 --notes)
 }
