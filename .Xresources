@@ -27,5 +27,5 @@ XTerm*border: false
 XTerm*faceName: Inconsolata:pixelsize=14
 XTerm*fullscreen: true
 
-xidle*timeout: 120
+xidle*timeout: 300
 xlock*startCmd: $HOME/usr/bin/hostoff

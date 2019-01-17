@@ -33,15 +33,12 @@ case $(whoami):$(hostname) in
         echo '10.0.2.2        delta' >> /etc/hosts
         echo 'dhcp' > /etc/hostname.re0
         mkdir /home/rcog/{doc,media}
-        cat <<EOF > /etc/rc.local
-/usr/local/bin/sshfs -o ssh_command='ssh -i /home/rcog/.ssh/id_rsa' rcog@delta:/home/rcog/media /home/rcog/media
-/usr/local/bin/sshfs -o ssh_command='ssh -i /home/rcog/.ssh/id_rsa' rcog@delta:/home/rcog/doc   /home/rcog/doc
-EOF
         rcctl set sndiod flags -mplay
         echo 'export PS1="\[[31m\][\u@\h \W]\\$ \[[0m\]"' >> /root/.profile
-        echo <<EOF > /etc/doas.conf
-permit nopass rcog cmd /usr/local/bin/sshfs args -o ssh_command="ssh -i /home/rcog/.ssh/id_rsa" rcog@delta:/home/rcog/doc /home/rcog/doc
-permit nopass rcog cmd /usr/local/bin/sshfs args -o ssh_command="ssh -i /home/rcog/.ssh/id_rsa" rcog@delta:/home/rcog/media /home/rcog/media
+        echo <<EOF >> /etc/fstab
+delta:/home/rcog/media     /home/rcog/media      nfs ro,nodev,nosuid,soft,intr 0 0
+delta:/home/rcog/media/... /home/rcog/media/...  nfs ro,nodev,nosuid,soft,intr 0 0
+delta:/home/rcog/doc       /home/rcog/doc        nfs ro,nodev,nosuid,soft,intr 0 0
 EOF
         ;;
     rcog:gulf)

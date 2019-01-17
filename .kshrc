@@ -24,6 +24,7 @@ export SUBJECT_WIDTH=$((COLUMNS - 60))
 export SURFRAW_browser=x-www-browser
 
 umask 077
+ulimit -c 0
 
 bind -m '^L'='^U clear^J^Y'
 
