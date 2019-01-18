@@ -18,7 +18,7 @@ setopt HIST_IGNORE_DUPS
 
 export LESSOPEN="|-~/.lessfilter %s"
 export PAGER='less -L'
-umask 007
+umask 077
 
 function precmd {
   # man zshmisc
@@ -35,7 +35,7 @@ function precmd {
   branch_name=${branch_name:-HEAD}
   RPROMPT="%F{blue}[$branch_name]%f"
 
-  for i in Applications Documents Downloads Movies Music Pictures; do
+  for i in Applications Documents Downloads Movies Music Pictures Public; do
     if [ -d ~/$i ]; then
         /bin/rm -f ~/$i/.localized
         chmod -N ~/$i # https://discussions.apple.com/thread/2750331
@@ -50,5 +50,6 @@ function nod { # notify on done
 }
 
 function 2fa {
-  oathtool --base32 --totp $(lpass show $1 --notes)
+  oathtool --base32 --totp $(lpass show $1 --notes) | pbcopy
 }
+source '/Users/rgermain/src/blessclient/lyftprofile' # bless ssh alias

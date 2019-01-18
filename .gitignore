@@ -1,5 +1,6 @@
 .Trash
 .Xauthority
+.aws
 .bash_history
 .cache
 .dmenu_cache
@@ -14,6 +15,7 @@
 .gnupg
 .lesshst
 .log
+.lpass
 .m2
 .mozilla/
 .npm

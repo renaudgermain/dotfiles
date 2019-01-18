@@ -14,8 +14,7 @@
 (ido-mode t)
 (jdecomp-mode 1)
 
-(setq default-tab-width              2
-      sh-basic-offset                2
+(setq sh-basic-offset                2
       scroll-step                    1
       inhibit-startup-message        t
       require-final-newline          t
@@ -39,6 +38,7 @@
 
 (setq-default transient-mark-mode    t
               indent-tabs-mode       nil
+              tab-width              2
               truncate-lines         t
               fill-column            80
               mode-line-format       nil)
@@ -75,7 +75,7 @@
       (append '(
                 ("\\.latex$"          . latex-mode)
                 ("Muttrc"             . muttrc-mode)
-                ("^\/tmp\/mutt"       . mail-mode)
+                ("^\/var\/folders\/.*\/mutt"       . mail-mode)
                 ("^\/etc\/"           . shell-script-mode)
                 ("\\.py$"             . python-mode)
                 ("\\.php$"            . html-mode)

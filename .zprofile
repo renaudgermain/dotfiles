@@ -3,12 +3,12 @@ export EMAIL=rgermain@lyft.com
 export FTK_SCRIPTS=$HOME/src/ftk-scripts
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export NVM_DIR=~/.nvm
-export PATH=$HOME/src/ftk-scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/usr/bin
+export PATH=$HOME/src/ftk-scripts:/usr/local/opt/mysql-client/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/usr/bin
 export PROJECT_DIR=~/src
 
 # export LESSOPEN # cat some.json | python -m json.tool
 
-source $(brew --prefix nvm)/nvm.sh
+# source $(brew --prefix nvm)/nvm.sh
 
 if [ ! -f ~/.zshrc.local ]; then
   for i in BITBUCKET BITBUCKET_SLUG JIRA TEAMCITY; do
@@ -20,3 +20,4 @@ fi
 
 . ~/.zshrc.local
 . ~/.zshrc
+source '/Users/rgermain/src/blessclient/lyftprofile' # bless ssh alias
