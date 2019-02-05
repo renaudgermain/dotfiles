@@ -9,6 +9,7 @@ alias mvn='MAVEN_OPTS=-Djansi.force=true mvn -B --log-file log/build.log -Dstyle
 alias rm='rm -i'
 alias scala='scala -deprecation -Xlint -feature'
 alias tags='rm -f TAGS; find . -name "*.java" -print | xargs etags --append'
+alias vi='vim -i NONE'
 
 HISTFILE=~/.zhistory
 HISTSIZE=SAVEHIST=10000
