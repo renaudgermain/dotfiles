@@ -5,6 +5,7 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export NVM_DIR=~/.nvm
 export PATH=$HOME/src/ftk-scripts:/usr/local/opt/mysql-client/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/usr/bin
 export PROJECT_DIR=~/src
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # export LESSOPEN # cat some.json | python -m json.tool
 
