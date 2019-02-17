@@ -37,6 +37,7 @@ function startvm --description "Start a virtual machine"
 end
 
 function aide; echo -e "Changer configuration clavier: Caps Lock\nChanger fenêtres: Control-J\nNouvelle fenêtre de navigation privée dans Firefox: Alt-f w"; end
+function dpigs; dpkg-query --show --showformat "\${Installed-Size}\t\${Package}\n" | sort -rn; end
 function e; emacs -nw $argv; end
 function f; perl -lpe $argv; end
 function i; for i in $argv; mediainfo --Inform=file:///home/rcog/.mediainforc "$i" | expand -30; end; end
