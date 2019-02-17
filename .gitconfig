@@ -1,5 +1,6 @@
 [user]
   name = Renaud Germain
+  email = renaud.germain@gmail.com
 [core]
   excludesfile = ~/.gitignore_global
   pager = /bin/cat
