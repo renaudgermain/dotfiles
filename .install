@@ -26,8 +26,8 @@ case $(whoami):$(hostname) in
         ;;
     root:gulf)
         # pkg_info -mz
-        pkg_add ImageMagick abook emacs--no_x11%emacs eyeD3 feh firefox ghc gnupg--%gnupg2 go mediainfo \
-                login_oath mpg321 mpv mupdf-1.13.0p2 mutt--gpgme-sasl rxvt-unicode sshfs-fuse surfraw \
+        pkg_add ImageMagick abook cabal-install emacs--no_x11%emacs eyeD3 feh firefox ghc gnupg--%gnupg2 go mediainfo \
+                login_oath mpg321 mpv mupdf-1.13.0p2 mutt--gpgme-sasl rxvt-unicode surfraw \
                 unzip-6.0p11 urlview-0.9p7
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
@@ -51,14 +51,11 @@ EOF
         echo 'github.com,192.30.253.113 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' >> $HOME/.ssh/known_hosts
         echo 'delta,10.0.2.2 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFg1cZ+4lVzMNlAGNLarVDk3QNPpK90bh/W/aLPW9DrWdLfrXbwkyu/CXP3SxmxHRUnj+LjWCcGuS7w+0IOIcZY=' >> $HOME/.ssh/known_hosts
         echo "TODO copy id_rsa.pub to delta:~/.ssh/authorized_keys"
-        curl -sL 'https://docs.google.com/uc?id=0B3X9GlR6EmbnSy1JdFlHdUYyaGs&export=download' \
-             --output $HOME/usr/bin/gdrive-openbsd-x64
-        test $(sha1 -q $HOME/usr/bin/gdrive-openbsd-x64) = 54be1d38b9014c6a8de5d71233cd6f208c27ac1c
-        chmod 700 $HOME/usr/bin/gdrive-openbsd-x64
-        ln -sf gdrive-openbsd-x64 $HOME/usr/bin/gdrive
+        go get github.com/prasmussen/gdrive # https://hub.docker.com/r/vovimayhem/gdrive/
+        mv go/bin/gdrive usr/bin
         gdrive about # visit url, get code, paste code
         gdrive download 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e # .todo.org
-        gdrive download 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh --path .abook/addressbook
+        gdrive download 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh --path .abook
         crontab - <<EOF
 0 0 * * * $HOME/usr/bin/gdrive update 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 doc/RecettesCuisine.org
 3 0 * * * $HOME/usr/bin/gdrive update 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e .todo.org
@@ -66,6 +63,7 @@ EOF
 9 0 * * * $HOME/usr/bin/gdrive update 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh .abook/addressbook
 EOF
         scp delta:~/.wallpaper.jpg .
+        export GPG_TTY=$(tty)
         ssh -t delta gpg --armor --export-secret-keys 80BF439C | gpg2 --import # FIXME make ssh forward stderr, have gpg2 accept stdin
         echo "trust\n5\ny\n" | gpg2 --command-fd 0 --edit-key 80BF439C
         echo 'default-key 7A6335617EADD4DA5DAEF9C6564FFC1780BF439C' >> $HOME/.gnupg/gpg.conf
@@ -74,6 +72,7 @@ EOF
         echo "set imap_pass=\"$p\"\nset smtp_pass=\"$p\"" | gpg2 --encrypt --recipient 80BF439C > ~/.cache/mutt/passwords.gpg
         # might require restarting gpg-agent
         echo "TODO browser.tabs.loadDivertedInBackground = true, uBlock origin, Tridactyl, Video Downloader professional"
+        # NOTE might need to click "See all versions" to get addons compatible w/ old Firefox
         git clone https://github.com/chneukirchen/nq.git /tmp/nq
         make -C /tmp/nq PREFIX=~/usr install
         echo "TODO (from delta) ssh rcog@127.0.0.1 -p 7922 cat ~/.ssh/id_rsa.pub >> .ssh/authorized_keys"
