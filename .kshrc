@@ -1,4 +1,5 @@
 alias bgg='boardgamegeek'
+alias cabal='env TMPDIR=/usr/local/cabal/build/ cabal'
 alias ls='ls -F'
 alias su='su -'
 alias e='emacs'
