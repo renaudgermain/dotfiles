@@ -131,6 +131,10 @@ if [ $# -eq 1 ] ; then
             if [ -x "`which pdftotext`" ]; then pdftotext "$1" -
             else echo "No pdftotext available"; fi ;;
 
+         *.py)
+           source-highlight -f esc -i "$1"
+           ;;
+
          *.rar|*.r[0-9][0-9])
             if [ -x "`which rar`" ]; then rar v "$1"
             elif [ -x "`which unrar`" ]; then unrar v "$1"

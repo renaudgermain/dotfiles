@@ -6,6 +6,7 @@
   ui = always
 [alias]
   mdiff = diff --word-diff --minimal -w -b
+  bs = "!f(){ git checkout $(git branch --color=never | grep -v '*' | slmenu -l 10); };f"
   fpush = "!f(){ git push origin :$(git symbolic-ref -q HEAD 2>/dev/null) && git push origin; };f"
   pr = pull-request
 [push]
