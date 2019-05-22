@@ -46,7 +46,7 @@
 
 (setq fish-mode-hook       '((lambda () (linum-mode 1)))
       emacs-lisp-mode-hook '((lambda () (linum-mode 1)))
-      javascript-mode      '((lambda () (linum-mode 1)))
+      js-mode-hook         '((lambda () (linum-mode 1)))
       haskell-mode-hook    '((lambda () (linum-mode 1)))
       html-mode-hook       '((lambda () (linum-mode 1)))
       html-mode-hook       '((lambda ()
