@@ -164,10 +164,11 @@ if [ $# -eq 1 ] ; then
             elif [ -x "`which miniunzip`" ]; then miniunzip -l "$1";
             elif [ -x "`which miniunz`" ]; then miniunz -l "$1";
             else echo "No unzip, miniunzip or miniunz available"; fi ;;
+         *.sh)
+           source-highlight -f esc -i "$1";;
          *.xml)
            source-highlight -f esc -i "$1"
            ;;
-
          *.zoo)
             if [ -x "`which zoo`" ]; then zoo v "$1";
             elif [ -x "`which unzoo`" ]; then unzoo -l "$1";
@@ -179,6 +180,8 @@ if [ $# -eq 1 ] ; then
            case $(/usr/local/opt/file-formula/bin/file $tmp) in
              *JSON*)
                python -m json.tool $tmp | source-highlight -f esc --src-lang json;;
+             *)
+               cat $tmp;;
            esac
            rm $tmp
            ;;

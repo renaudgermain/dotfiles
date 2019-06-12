@@ -11,8 +11,14 @@
 (menu-bar-mode -1)
 (show-paren-mode t)
 (save-place-mode 1)
-(ido-mode t)
+;; (ido-mode t)
 (jdecomp-mode 1)
+(helm-mode 1)
+
+;; http://tuhdo.github.io/helm-intro.html
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(global-set-key (kbd "C-x b") 'helm-mini)
 
 (setq sh-basic-offset                2
       scroll-step                    1
@@ -46,7 +52,7 @@
 ;; https://emacs.stackexchange.com/questions/17440/define-the-behaviour-of-help-window
 (setq fish-mode-hook       '((lambda () (linum-mode 1)))
       emacs-lisp-mode-hook '((lambda () (linum-mode 1)))
-      javascript-mode      '((lambda () (linum-mode 1)))
+      js-mode-hook         '((lambda () (linum-mode 1)))
       haskell-mode-hook    '((lambda () (linum-mode 1)))
       html-mode-hook       '((lambda ()
                                (linum-mode 1)
@@ -102,7 +108,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (terraform-mode apples-mode mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode jdecomp))))
+    (helm flycheck groovy-mode lsp-mode lsp-java eglot terraform-mode apples-mode mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode jdecomp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
