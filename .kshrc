@@ -22,7 +22,6 @@ export NQDIR="$HOME/.cache/nq"
 export PS1="[34m[[33m\u@\h [32m\w[34m]▶[0m "
 export SENDER_WIDTH=$((COLUMNS - 125))
 export SUBJECT_WIDTH=$((COLUMNS - 60))
-export SURFRAW_browser=x-www-browser
 
 umask 077
 ulimit -c 0
