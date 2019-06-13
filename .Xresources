@@ -29,3 +29,11 @@ XTerm*fullscreen: true
 
 xidle*timeout: 300
 xlock*startCmd: $HOME/usr/bin/hostoff
+xlock*username: \040\040\040\040user\040
+xlock*password: password
+xlock*description: false
+xlock*font: -adobe-courier-bold-r-normal--25-180-100-100-m-150-iso10646-1
+xlock*info:
+xlock*echokeys: true
+xlock*echokey: *
+xlock*validate:
