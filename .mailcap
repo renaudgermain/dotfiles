@@ -1,4 +1,4 @@
-image/*; feh --scale-down -B black '%s'; edit=gimp %s
+image/*; feh --scale-down --image-bg black --fullscreen --hide-pointer '%s'; edit=gimp %s
 
 application/msword;             less %s;                   copiousoutput
 application/vnd.ms-word;        less %s;                   copiousoutput
