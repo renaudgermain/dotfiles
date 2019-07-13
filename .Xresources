@@ -37,3 +37,4 @@ xlock*info:
 xlock*echokeys: true
 xlock*echokey: *
 xlock*validate:
+xlock*icongeometry: 1x1
