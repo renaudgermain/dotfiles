@@ -39,7 +39,30 @@ delta:/home/rcog/media     /home/rcog/media      nfs ro,nodev,nosuid,soft,intr 0
 delta:/home/rcog/media/... /home/rcog/media/...  nfs ro,nodev,nosuid,soft,intr 0 0
 delta:/home/rcog/doc       /home/rcog/doc        nfs ro,nodev,nosuid,soft,intr 0 0
 EOF
-        # TODO fix ugly xenodm
+        cat << EOF > /etc/X11/xenodm/Xresources
+xlogin.Login.echoPasswd:       true
+xlogin.Login.fail:             denied
+xlogin.Login.greeting:
+xlogin.Login.namePrompt:       username\040
+xlogin.Login.passwdPrompt:     password\040
+
+xlogin.Login.height:           180
+xlogin.Login.width:            280
+xlogin.Login.y:                320
+xlogin.Login.frameWidth:       0
+xlogin.Login.innerFramesWidth: 0
+
+xlogin.Login.background:       black
+xlogin.Login.foreground:       #eeeeee
+xlogin.Login.failColor:        white
+xlogin.Login.inpColor:         black
+xlogin.Login.promptColor:      #eeeeec
+
+xlogin.Login.face:             fixed-13
+xlogin.Login.failFace:         fixed-13
+xlogin.Login.promptFace:       fixed-13
+EOF
+        echo 'xsetroot -solid black' > /etc/X11/xenodm/Xsetup_0
         ;;
     rcog:gulf)
         umask 077
