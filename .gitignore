@@ -5,6 +5,7 @@
 .bash_history
 .cabal
 .cache
+.dbus
 .dmenu_cache
 .emacs.d/auto-save-list
 .emacs.d/elpa
@@ -13,12 +14,14 @@
 .gdrive
 .ghc
 .gimp-2.8/
+.ksh_history
 .lesshst
 .log
 .mail
 .mozilla/
 .password-store
 .qemu/
+.sndio
 .ssh
 .ssh/id_rsa
 .surf/cache
