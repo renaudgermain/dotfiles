@@ -49,12 +49,7 @@ function map {
 }
 
 function startvm {
-    image=~/.qemu/$1.img
-    if [ -f $image ]; then
-        qemu-system-x86_64 ~/.qemu/$1.img -machine type=pc,accel=kvm -m 512M -cpu host -enable-kvm -vga std -netdev user,id=network0 -device rtl8139,netdev=network0
-    else
-        echo "machine \`$1\` doesn't exist"
-    fi
+    startx $HOME/.xinitrc $1
 }
 
 # export LC_MESSAGES="de_DE.UTF-8"
