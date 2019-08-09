@@ -106,3 +106,34 @@ function wttr {
     # curl "http://wttr.in/montreal?m"
     wget -q -O- "http://wttr.in/${1:-montreal}?m"
 }
+
+function vol {
+    b="────────────────────────────────────────────────────────────────────────────────────────────────────"
+    vol=$(amixer sget -M Master|tail -1|sed -e 's/.*\[\([0-9]\+\)%.*/\1/')
+    stty -echo
+    tput civis
+
+    while read -p "Volume ${b:0:$vol}█${b:$vol:100} ($vol%)" -n1 char; do
+      case $char in
+        q) break;;
+        h) vol=$((vol == 0 ? 0 : vol - 1));;
+        l) vol=$((vol == 100 ? 100 : vol + 1));;
+        0) vol=0;;
+        1) vol=10;;
+        2) vol=20;;
+        3) vol=30;;
+        4) vol=40;;
+        5) vol=50;;
+        6) vol=60;;
+        7) vol=70;;
+        8) vol=80;;
+        9) vol=90;;
+      esac
+      tput cr
+      tput el
+      amixer -q -M sset Master $vol%
+    done
+    echo ""
+    stty echo
+    tput cnorm
+}
