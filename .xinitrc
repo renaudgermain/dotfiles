@@ -28,8 +28,10 @@ case $(hostname):$1 in
         exec ssh-agent x-window-manager
         ;;
     delta:echo)
-        exec qemu-system-x86_64 -full-screen -no-frame ~/.qemu/echo.img -machine type=pc,accel=kvm -m 1G -cpu host -enable-kvm \
-             -vga virtio -netdev user,id=network0 -device rtl8139,netdev=network0
+        qemu-system-x86_64 ~/.qemu/echo.img -machine type=pc,accel=kvm -m 1G -cpu host -enable-kvm \
+           -vga virtio -netdev user,id=network0 -device rtl8139,netdev=network0 &
+        xdotool search --sync --name QEMU windowsize %@ 1440 900
+        wait $!
         ;;
     gulf*)
         . ~/.profile
