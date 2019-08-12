@@ -7,4 +7,3 @@ export PATH HOME TERM ENV LANG EMAIL
 if [ -n "$BASH" ]; then
   . $HOME/.bashrc
 fi
-source '/Users/rgermain/src/blessclient/lyftprofile' # bless ssh alias
