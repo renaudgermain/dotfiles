@@ -21,3 +21,4 @@ fi
 
 . ~/.zshrc.local
 . ~/.zshrc
+source '/Users/rgermain/src/blessclient/lyftprofile' # bless ssh alias

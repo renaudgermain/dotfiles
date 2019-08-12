@@ -111,3 +111,4 @@ function wttr {
     # curl "http://wttr.in/montreal?m"
     wget -q -O- "http://wttr.in/${1:-montreal}?m"
 }
+source '/Users/rgermain/src/blessclient/lyftprofile' # bless ssh alias
