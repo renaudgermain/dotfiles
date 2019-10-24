@@ -4,6 +4,7 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (package-initialize)
 ;; M-x package-install RET markdown-mode RET
 
@@ -108,7 +109,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (protobuf-mode idle-highlight-mode helm flycheck groovy-mode lsp-mode lsp-java eglot terraform-mode apples-mode mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode jdecomp))))
+    (magit pip-requirements go-mode protobuf-mode idle-highlight-mode helm flycheck groovy-mode lsp-mode lsp-java eglot terraform-mode apples-mode mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode jdecomp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -14,10 +14,9 @@ set certificate_file=~/.mutt.certificates
 
 unset help recall markers confirmappend collapse_unread move pager_format ascii_chars wait_key record
 set envelope_from fast_reply include status_on_top pager_stop pgp_replyencrypt copy use_from
-set pgp_autosign reply_to smart_wrap # pipe_decode autoedit auto_tag delete
+set reply_to smart_wrap # pipe_decode autoedit auto_tag delete
 set rfc2047_parameters mime_forward ssl_force_tls
 
-set pgp_sign_command="gpg --no-verbose --output - --armor --detach-sign --textmode %?a?-u %a? %f"
 set pgp_verify_command="gpg --no-verbose --output - --verify %s %f"
 set pgp_use_gpg_agent="yes"
 

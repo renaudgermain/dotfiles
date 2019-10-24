@@ -1,6 +1,7 @@
 export EDITOR=emacs
 export EMAIL=rgermain@lyft.com
 export FTK_SCRIPTS=$HOME/src/ftk-scripts
+export GOPATH=$HOME
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export NVM_DIR=~/.nvm
 export PATH=$HOME/src/ftk-scripts:/usr/local/opt/mysql@5.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/usr/bin

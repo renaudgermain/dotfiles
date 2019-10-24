@@ -6,7 +6,8 @@ alias less='less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init'
 alias ls='ls -G'
 alias mv='mv -i'
 alias mvn='MAVEN_OPTS=-Djansi.force=true mvn -B --log-file log/build.log -Dstyle.color=always --global-settings ~/.m2/settings.xml --fail-fast -DfailIfNoTests=false -Dmaven.test.failure.ignore=false' # https://issues.apache.org/jira/browse/MNG-6380
-alias mysql='mysql --defaults-extra-file=<(echo -e "[client]\nuser=$USER\npassword=$(lpass show databases --password)")'
+alias mysql='mysql --defaults-extra-file=<(lpass show databases --password | perl -lpe "s/(.*)/[client]\nuser=$USER\npassword=\$1/")'
+
 alias rm='rm -i'
 alias scala='scala -deprecation -Xlint -feature'
 alias tags='rm -f TAGS; find . -name "*.java" -print | xargs etags --append'
