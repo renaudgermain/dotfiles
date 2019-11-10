@@ -1,0 +1,6 @@
+#!/usr/local/bin/emacs --script
+
+;; random numbers from 0 - 60
+(require 'cookie1)
+(defun take (n l) (if (eq n 0) nil (cons (car l) (take (- n 1) (cdr l)))))
+(print (take 10 (append (cookie-shuffle-vector (vconcat (number-sequence 0 60))) nil)))
