@@ -30,6 +30,7 @@ case $(hostname):$1 in
     delta:echo)
         qemu-system-x86_64 ~/.qemu/echo.img -machine type=pc,accel=kvm -m 1G -cpu host -enable-kvm \
            -vga virtio -netdev user,id=network0 -device rtl8139,netdev=network0 &
+        sleep 2
         xdotool search --sync --name QEMU windowsize %@ 1440 900
         wait $!
         ;;
