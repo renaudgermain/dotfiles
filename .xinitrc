@@ -14,9 +14,9 @@ case $(hostname):$1 in
         ;;
     delta:gulf)
         export QEMU_AUDIO_DRV=alsa
-        exec qemu-system-x86_64 -full-screen -no-frame -m 4G -machine pc,accel=kvm -cpu kvm64 -enable-kvm -usb -usbdevice mouse \
+        exec qemu-system-x86_64 -smp 2 -m 4G -machine pc,accel=kvm -cpu kvm64 -enable-kvm \
              -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22,hostfwd=tcp:192.168.0.101:8080-:80 -device rtl8139,netdev=mynet0 \
-             -smp 4 -vga vmware -soundhw ac97 ~/.qemu/gulf.img
+             -vga vmware -soundhw ac97 ~/.qemu/gulf.img -boot order=dc # -cdrom ~/bak/apps/os/install66.iso
         ;;
     delta:)
         feh --bg-center --no-fehbg ~/.wallpaper.jpg
