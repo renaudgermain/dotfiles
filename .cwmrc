@@ -11,7 +11,7 @@ bind-key 4-k      window-rcycle
 bind-key 4-q      quit
 bind-key 4-r      restart
 bind-key 4-x      window-delete
-bind-key 4-f      window-fullscreen
+bind-key 4-f      window-maximize
 bind-key 4-s      screenshot
 bind-key 4-space  menu-exec
 
