@@ -28,7 +28,7 @@ case $(whoami):$(hostname) in
         # pkg_info -mz
         pkg_add ImageMagick abook cabal-install emacs--no_x11%emacs eyeD3 feh firefox ghc gnupg--%gnupg2 go mediainfo \
                 login_oath mpg321 mpv mupdf-1.13.0p2 mutt--gpgme-sasl rxvt-unicode surfraw \
-                unzip-6.0p12 urlview-0.9p8
+                unzip-6.0p12 urlview-0.9p8 inconsolata-font
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
         mkdir /home/rcog/{doc,media}
