@@ -4,6 +4,7 @@ LANG=en_US.UTF-8
 EMAIL=renaud.germain@gmail.com
 SURFRAW_browser=x-www-browser
 export PATH HOME TERM ENV LANG EMAIL SURFRAW_browser
+ulimit -c 0
 
 if [ -n "$BASH" ]; then
   . $HOME/.bashrc
