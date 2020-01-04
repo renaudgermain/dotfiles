@@ -63,7 +63,7 @@ xlogin.Login.face:             fixed-13
 xlogin.Login.failFace:         fixed-13
 xlogin.Login.promptFace:       fixed-13
 EOF
-        echo 'xsetroot -solid black' > /etc/X11/xenodm/Xsetup_0
+        echo "#!/bin/sh\n/usr/X11R6/bin/xsetroot -solid black\n/usr/X11R6/bin/xrandr --output default --mode 1440x900" > /etc/X11/xenodm/Xsetup_0
         ;;
     rcog:gulf)
         umask 077
