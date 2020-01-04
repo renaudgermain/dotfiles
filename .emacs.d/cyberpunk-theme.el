@@ -88,7 +88,7 @@
       (cyberpunk-blue-8 "#4F94CD")
       (cyberpunk-magenta "#dc8cc3")
       (cyberpunk-black (if (and cyberpunk-transparent-background
-                                (not (display-graphic-p)))
+                                (not (display-graphic-p)));; rcog 2019-12-14 remove darwin only
                            "ARGBBB000000"
                          "#000000"))
       (cyberpunk-black-2 "#0C1021")
@@ -119,7 +119,7 @@
    `(default ((,class (:foreground ,cyberpunk-gray :background ,cyberpunk-black))))
    `(cursor ((,class (:background ,cyberpunk-fg))))
    `(escape-glyph-face ((,class (:foreground ,cyberpunk-red))))
-   ;; `(fringe ((,class (:foreground ,cyberpunk-fg :background ,cyberpunk-bg+1))))
+   ;; `(fringe ((,class (:foreground ,cyberpunk-fg :background ,cyberpunk-bg+1))));; rcog 2019-12-14
    `(header-line ((,class (:foreground ,cyberpunk-yellow
                                        :background ,cyberpunk-bg-1
                                        :box (:line-width -1 :style released-button)))))
@@ -152,7 +152,7 @@
    ;; faces used by isearch
    `(isearch ((,class (:foreground ,cyberpunk-black :background ,cyberpunk-pink-1))))
    `(isearch-fail ((,class (:background ,cyberpunk-red-1))))
-   
+
    `(lazy-highlight ((,class (:foreground ,cyberpunk-black :background ,cyberpunk-yellow))))
    `(query-replace ((,class (:background ,cyberpunk-gray-5))))
    `(Highline-face ((,class (:background ,cyberpunk-green-1))))
@@ -179,7 +179,7 @@
    ;;; font lock
    `(font-lock-builtin-face ((,class (:foreground ,cyberpunk-blue-5))))
    `(font-lock-comment-face ((,class (:foreground ,cyberpunk-gray-2 :italic t))))
-   ;; `(font-lock-comment-delimiter-face ((,class (:foreground ,cyberpunk-green)))) 
+   ;; `(font-lock-comment-delimiter-face ((,class (:foreground ,cyberpunk-green))))
    `(font-lock-constant-face ((,class (:foreground ,cyberpunk-blue-6))))
    ;; `(font-lock-doc-face ((,class (:foreground ,cyberpunk-green+1))))
    `(font-lock-doc-face ((,class (:foreground ,cyberpunk-yellow-1))))
@@ -258,7 +258,7 @@
    `(company-scrollbar-bg ((,class (:background ,cyberpunk-gray-5))))
    `(company-preview ((,class (:foreground ,cyberpunk-gray :background ,cyberpunk-pink-1))))
    `(company-preview-common ((,class (:foreground ,cyberpunk-gray :background ,cyberpunk-pink-1))))
-   
+
    ;; diff
    `(diff-added ((,class (:foreground ,cyberpunk-green))))
    `(diff-changed ((,class (:foreground ,cyberpunk-yellow))))
@@ -529,7 +529,7 @@
    `(magit-reflog-cherry-pick  ((t (:foreground ,cyberpunk-green))))
    `(magit-reflog-remote       ((t (:foreground ,cyberpunk-cyan))))
    `(magit-reflog-other        ((t (:foreground ,cyberpunk-cyan))))
-   
+
    `(eval-sexp-fu-flash ((,class (:background ,cyberpunk-gray-8 :foreground ,cyberpunk-pink-2))))
 
    ;; message-mode
@@ -622,10 +622,10 @@
    `(org-column ((,class (:background ,cyberpunk-yellow-3 :foreground ,cyberpunk-black))))
    `(org-column-title ((,class (:background ,cyberpunk-bg-1 :underline t :weight bold))))
    `(org-block ((,class (:foreground ,cyberpunk-fg :background ,cyberpunk-bg-05))))
-   `(org-block-begin-line 
+   `(org-block-begin-line
      ((,class (:foreground "#008ED1" :background ,cyberpunk-bg-1))))
    `(org-block-background ((,class (:background ,cyberpunk-bg-05))))
-   `(org-block-end-line 
+   `(org-block-end-line
      ((,class (:foreground "#008ED1" :background ,cyberpunk-bg-1))))
 
    ;; `(org-deadline-announce ((,class (:foreground ,cyberpunk-red-1))))
