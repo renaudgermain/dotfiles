@@ -37,7 +37,6 @@ case $(whoami):$(hostname) in
         cat <<EOF >> /etc/fstab
 swap                       /tmp                  mfs rw,nodev,noatime,async,nosuid,-s=128M 0 0
 delta:/home/rcog/media     /home/rcog/media      nfs ro,nodev,nosuid,soft,intr             0 0
-delta:/home/rcog/media/... /home/rcog/media/...  nfs ro,nodev,nosuid,soft,intr             0 0
 delta:/home/rcog/doc       /home/rcog/doc        nfs ro,nodev,nosuid,soft,intr             0 0
 EOF
         cat << EOF > /etc/X11/xenodm/Xresources
