@@ -21,8 +21,8 @@ export HISTSIZE=10000
 export MANPATH=":$HOME/usr/share/man"
 export NQDIR="$HOME/.cache/nq"
 export PS1="[34m[[33m\u@\h [32m\w[34m]▶[0m "
-export SENDER_WIDTH=$((COLUMNS - 125))
-export SUBJECT_WIDTH=$((COLUMNS - 60))
+export SENDER_WIDTH=$(((COLUMNS - 30) * 2 / 5))
+export SUBJECT_WIDTH=$(((COLUMNS - 30) * 3 / 5))
 
 umask 077
 ulimit -c 0
