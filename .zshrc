@@ -55,6 +55,12 @@ function 2fa {
 }
 source '/Users/rgermain/src/blessclient/lyftprofile' # bless ssh alias
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/rgermain/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rgermain/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/rgermain/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rgermain/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
 function keyboard { # not working
   case $1 in
     enable)
@@ -73,3 +79,9 @@ function mysql {
   p=$(lpass show databases --password)
   /usr/local/opt/mysql@5.5/bin/mysql --defaults-extra-file=<(echo "[client]\nuser=$USER\npassword=$p") $*
 }
+
+function dbot_unlock {
+  PGPASSWORD=$(lpass show postgres --password) PGUSER=$(lpass show postgres --username) PGHOST=$(lpass show postgres --url|sed -e 's|.*://||') PGDATABASE=$(lpass show postgres --note) psql -c "update public.environment set lock ='{\"dwh\":false,\"main\":false,\"prepare\":false}'::JSONB where name= '$1';"
+}
+
+PATH=$PATH:/Users/rgermain/.lyftkube-bin

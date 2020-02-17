@@ -112,3 +112,4 @@ function wttr {
     wget -q -O- "http://wttr.in/${1:-montreal}?m"
 }
 source '/Users/rgermain/src/blessclient/lyftprofile' # bless ssh alias
+PATH=$PATH:/Users/rgermain/.lyftkube-bin
