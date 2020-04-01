@@ -27,8 +27,8 @@ case $(whoami):$(hostname) in
     root:gulf)
         # pkg_info -mz
         pkg_add ImageMagick abook cabal-install emacs--no_x11%emacs eyeD3 feh firefox ghc gnupg--%gnupg2 go mediainfo \
-                login_oath mpg321 mpv mupdf-1.13.0p2 mutt--gpgme-sasl rxvt-unicode surfraw \
-                unzip-6.0p12 urlview-0.9p8 inconsolata-font
+                login_oath mpg321 mpv mupdf-1.13.0p2 mutt--gpgme-sasl rclone rxvt-unicode surfraw \
+                unzip-6.0p12 urlview-0.9p8 inconsolata-font w3m-0.5.3p8
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
         mkdir /home/rcog/{doc,media}
@@ -80,10 +80,10 @@ EOF
         gdrive download 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e # .todo.org
         gdrive download 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh --path .abook
         crontab - <<EOF
-0 0 * * * $HOME/usr/bin/gdrive update 1SOIDcpLROYoHEjnMLZ0vrIfTpYD2KUK1 doc/RecettesCuisine.org
-3 0 * * * $HOME/usr/bin/gdrive update 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e .todo.org
-6 0 * * * $HOME/usr/bin/gdrive update 1015zVq55bI7ByjQAfaRfMRh0wXyeq4VS doc/notes.org
-9 0 * * * $HOME/usr/bin/gdrive update 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh .abook/addressbook
+0 0 * * * /usr/local/bin/rclone sync doc/RecettesCuisine.org gdrive:rclone
+3 0 * * * /usr/local/bin/rclone sync .todo.org gdrive:rclone
+6 0 * * * /usr/local/bin/rclone sync doc/notes.org gdrive:rclone
+9 0 * * * /usr/local/bin/rclone sync .abook/addressbook gdrive:rclone
 EOF
         scp delta:~/.wallpaper.jpg .
         export GPG_TTY=$(tty)
