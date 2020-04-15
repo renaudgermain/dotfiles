@@ -1,6 +1,6 @@
 alias bgg='boardgamegeek'
 alias cabal='env TMPDIR=/usr/local/cabal/build/ cabal'
-alias ls='ls -F'
+alias ls='colorls -G'
 alias su='su -'
 alias e='emacs'
 alias feh='feh --scale-down --image-bg black --fullscreen --hide-pointer'
@@ -18,6 +18,7 @@ export EDITOR='emacs'
 export HISTCONTROL=ignoredups:ignorespace
 export HISTFILE=~/.ksh_history
 export HISTSIZE=10000
+export LSCOLORS="HxgxfxdxcxDxedCbCbHBbH"
 export MANPATH=":$HOME/usr/share/man"
 export NQDIR="$HOME/.cache/nq"
 export PS1="[34m[[33m\u@\h [32m\w[34m]▶[0m "
