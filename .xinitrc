@@ -10,11 +10,11 @@ case $(hostname):$1 in
             -vga vmware -hda ~/.qemu/alpha.img -smp 2 -netdev user,id=network0,hostfwd=tcp:127.0.0.1:8922-:22 \
             -device rtl8139,netdev=network0 -virtfs local,id=home,path=/home/rcog/media,security_model=none,mount_tag=media \
             -virtfs local,id=doc,path=/home/rcog/doc,security_model=none,mount_tag=doc \
-            -soundhw ac97 -display sdl
+            -soundhw ac97
         ;;
     delta:gulf)
         export QEMU_AUDIO_DRV=alsa
-        exec qemu-system-x86_64 -smp 2 -m 4G -machine pc,accel=kvm -cpu kvm64 -enable-kvm \
+        exec qemu-system-x86_64 -smp 2 -m 4G -machine pc,accel=kvm -cpu kvm64 -enable-kvm -usb -device usb-tablet\
              -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22,hostfwd=tcp:192.168.0.101:8080-:80 -device rtl8139,netdev=mynet0 \
              -vga vmware -soundhw ac97 ~/.qemu/gulf.img -boot order=dc # -cdrom ~/bak/apps/os/install66.iso
         ;;
