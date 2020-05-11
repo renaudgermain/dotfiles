@@ -4,6 +4,7 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
+;; M-x package-refresh-contents
 ;; M-x package-install RET markdown-mode RET
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/cyberpunk-theme.el"); from https://emacsthemes.com -> https://github.com/n3mo/cyberpunk-theme.el
