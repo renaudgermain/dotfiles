@@ -9,6 +9,7 @@ application/x-excel;            xls2csv %s;                copiousoutput
 application/vnd.ms-excel;       xls2csv %s;                copiousoutput
 
 application/epub+zip;           mupdf '%s'
+text/calendar;                  ical2txt '%s';             copiousoutput
 text/html;                      w3m -I %{charset} -T text/html -dump %s; copiousoutput; edit=emacs '%s'
 text/htm;                       w3m -I %{charset} -T text/html -dump %s; copiousoutput; edit=emacs '%s'
 application/pdf;                mupdf '%s'

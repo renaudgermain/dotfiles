@@ -37,6 +37,7 @@ ignore X- Reply-to: List- Resent- Old-return-path
 unignore date: X-Mailer: User-Agent:
 hdr_order From: Date: To: Cc: Subject: user-agent: X-Mailer:
 unauto_view text/html
+auto_view text/calendar
 
 folder-hook .                          push \eV #collapse all threads when entering a folder
 folder-hook sent                       set sort="date-sent"
