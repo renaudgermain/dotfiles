@@ -26,7 +26,7 @@ case $(whoami):$(hostname) in
         ;;
     root:gulf)
         # pkg_info -mz
-        pkg_add ImageMagick abook cabal-install emacs--no_x11%emacs eyeD3 feh firefox ghc gnupg--%gnupg2 go mediainfo \
+        pkg_add ImageMagick abook cabal-install docx2txt emacs--no_x11%emacs eyeD3 feh firefox ghc gnupg--%gnupg2 go mediainfo \
                 login_oath mpg321 mpv mupdf-1.13.0p2 mutt--gpgme-sasl rclone rxvt-unicode surfraw \
                 unzip-6.0p12 urlview-0.9p8 inconsolata-font w3m-0.5.3p8
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts

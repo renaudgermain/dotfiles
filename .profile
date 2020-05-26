@@ -3,7 +3,8 @@ ENV=$HOME/.kshrc
 LANG=en_US.UTF-8
 EMAIL=renaud.germain@gmail.com
 SURFRAW_browser=x-www-browser
-export PATH HOME TERM ENV LANG EMAIL SURFRAW_browser
+LESSOPEN="|~/.lessfilter %s"
+export PATH HOME TERM ENV LANG LESSOPEN EMAIL SURFRAW_browser
 ulimit -c 0
 
 if [ -n "$BASH" ]; then

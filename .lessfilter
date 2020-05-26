@@ -11,7 +11,7 @@
 # Further Modifications by Thomas Schoepf <schoepf@debian.org>
 #
 # combined lessfile and lesspipe to avoid duplication of decode stage
-# shell is sure icky.  I'm real tempted to rewrite the whole thing in Perl 
+# shell is sure icky.  I'm real tempted to rewrite the whole thing in Perl
 #
 # Unfortunately, this means that I have filename dependencies sprinkled
 # throughout the code.  If you don't want lessfile to be called that,
@@ -106,6 +106,9 @@ if [ $# -eq 1 ] ; then
 
          *.doc|*.rtf)
             if [ -x "`which catdoc`" ]; then catdoc "$1"; fi ;;
+
+         *.docx)
+            if [ -x "`which docx2txt`" ]; then docx2txt "$1" -; fi ;;
 
          *.gif|*.jpeg|*.jpg|*.pcd|*.png|*.tga|*.tiff|*.tif)
             if [ -x "`which identify`" ]; then

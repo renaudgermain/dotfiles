@@ -1,24 +1,25 @@
-application/vnd.sun.xml.writer sxw
-application/vnd.sun.xml.writer.template stw
-application/vnd.sun.xml.writer.global sxg
+application/epub+zip epub
+application/html html
+application/pdf pdf
+application/vnd.openxmlformats-officedocument.wordprocessingml.document docx
+application/vnd.stardivision.calc sdc
+application/vnd.stardivision.draw sda
+application/vnd.stardivision.impress sdd sdp
+application/vnd.stardivision.math smf
 application/vnd.stardivision.writer sdw vor
 application/vnd.stardivision.writer-global sgl
 application/vnd.sun.xml.calc sxc
 application/vnd.sun.xml.calc.template stc
-application/vnd.stardivision.calc sdc
-application/vnd.sun.xml.impress sxi
-application/vnd.sun.xml.impress.template sti
-application/vnd.stardivision.impress sdd sdp
 application/vnd.sun.xml.draw sxd
 application/vnd.sun.xml.draw.template std
-application/vnd.stardivision.draw sda
+application/vnd.sun.xml.impress sxi
+application/vnd.sun.xml.impress.template sti
 application/vnd.sun.xml.math sxm
-application/vnd.stardivision.math smf
-application/pdf pdf
-application/html html
-video/mpeg vob
-video/mpeg mpg
-video/mp4 m4v
+application/vnd.sun.xml.writer sxw
+application/vnd.sun.xml.writer.global sxg
+application/vnd.sun.xml.writer.template stw
 text/plain mailcap org log
-application/epub+zip epub
 type=application/x-ica exts=ica desc="Citrix ICA"
+video/mp4 m4v
+video/mpeg mpg
+video/mpeg vob
