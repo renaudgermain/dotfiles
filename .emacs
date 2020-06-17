@@ -97,7 +97,9 @@
    (quote
     ("0eb173dcdd23dbc02e0a178c7e8d3d9a9697786c11ef68b77b8b6255d4163cfd" default)))
  '(cyberpunk-transparent-background t)
- '(package-selected-packages (quote (fish-mode markdown-mode haskell-mode go-mode))))
+ '(package-selected-packages
+   (quote
+    (scala-mode fish-mode markdown-mode haskell-mode go-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
