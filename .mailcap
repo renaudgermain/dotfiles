@@ -14,6 +14,7 @@ text/html;                      w3m -I %{charset} -T text/html -dump %s; copious
 text/htm;                       w3m -I %{charset} -T text/html -dump %s; copiousoutput; edit=emacs '%s'
 application/pdf;                mupdf '%s'
 
+audio/*;       mpv --really-quiet '%s'
 video/*;       mpv --really-quiet '%s'
 application/x-directory; see '%s'/*
 
