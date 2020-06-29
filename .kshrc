@@ -21,7 +21,7 @@ export HISTSIZE=10000
 export LSCOLORS="HxgxfxdxcxDxedCbCbHBbH"
 export MANPATH=":$HOME/usr/share/man"
 export NQDIR="$HOME/.cache/nq"
-export PS1="[34m[[33m\u@\h [32m\w[34m]▶[0m "
+export PS1='$(test -d ~/Downloads && rmdir ~/Downloads)[34m[[33m\u@\h [32m\w[34m][$(($? == 0 ? 34 : 31))m▶[0m '
 export SENDER_WIDTH=$(((COLUMNS - 30) * 2 / 5))
 export SUBJECT_WIDTH=$(((COLUMNS - 30) * 3 / 5))
 
