@@ -26,9 +26,10 @@ case $(whoami):$(hostname) in
         ;;
     root:gulf)
         # pkg_info -mz
-        pkg_add ImageMagick abook cabal-install docx2txt emacs--no_x11%emacs eyeD3 feh firefox ghc gnupg--%gnupg2 go mediainfo \
-                login_oath mpg321 mpv mupdf-1.13.0p2 mutt--gpgme-sasl rclone rxvt-unicode surfraw \
-                unzip-6.0p12 urlview-0.9p8 inconsolata-font w3m-0.5.3p8
+        pkg_add git rxvt-unicode
+        pkg_add feh gnupg--%gnupg2 mutt-gpgme-sasl rclone
+        pkg_add ImageMagick abook cabal-install docx2txt emacs--no_x11%emacs eyeD3 firefox ghc gnupg--%gnupg2 go mediainfo \
+                login_oath mpg321 mpv mupdf-1.16.1p1 surfraw unzip-6.0p13 urlview-0.9p8 inconsolata-font iridium w3m-0.5.3p8
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
         mkdir /home/rcog/{doc,media}
@@ -67,18 +68,15 @@ EOF
     rcog:gulf)
         umask 077
         ln -s .xinitrc .xsession
-        mkdir $HOME/.abook
         ssh-keygen
         echo "TODO upload ~/.ssh/id_rsa.pub to github.com"
         git remote set-url origin git@github.com:renaudgermain/dotfiles.git
         echo 'github.com,192.30.253.113 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' >> $HOME/.ssh/known_hosts
         echo 'delta,10.0.2.2 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFg1cZ+4lVzMNlAGNLarVDk3QNPpK90bh/W/aLPW9DrWdLfrXbwkyu/CXP3SxmxHRUnj+LjWCcGuS7w+0IOIcZY=' >> $HOME/.ssh/known_hosts
         echo "TODO copy id_rsa.pub to delta:~/.ssh/authorized_keys"
-        go get github.com/prasmussen/gdrive # https://hub.docker.com/r/vovimayhem/gdrive/
-        mv go/bin/gdrive usr/bin
-        gdrive about # visit url, get code, paste code
-        gdrive download 1WNJ7QCudjB6KNlMp0WgLrixYj6rPDx-e # .todo.org
-        gdrive download 1EZTLgp8398ZIGhQlHq3_safi9er5TvEh --path .abook
+        rclone config # read/write from rclone subdir only
+        mkdir $HOME/.abook
+        rclone sync gdrive:rclone/addressbook .abook
         crontab - <<EOF
 0 0 * * * /usr/local/bin/rclone sync doc/RecettesCuisine.org gdrive:rclone
 3 0 * * * /usr/local/bin/rclone sync .todo.org gdrive:rclone

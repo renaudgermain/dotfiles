@@ -5,6 +5,7 @@
 .bash_history
 .cabal
 .cache
+.config/rclone/
 .dbus
 .dmenu_cache
 .emacs.d/auto-save-list
@@ -14,6 +15,7 @@
 .gdrive
 .ghc
 .gimp-2.8/
+.gnupg
 .ksh_history
 .lesshst
 .log
@@ -46,5 +48,4 @@ media
 src
 tmp
 usr/bin/[fnt]q
-usr/bin/gdrive*
 usr/share
