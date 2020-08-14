@@ -13,8 +13,8 @@
 (show-paren-mode t)
 (save-place-mode 1)
 (ido-mode t)
-(jdecomp-mode 1)
-(helm-mode 0)
+;;(jdecomp-mode 1)
+;;(helm-mode 0)
 
 ;; http://tuhdo.github.io/helm-intro.html
 ;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action

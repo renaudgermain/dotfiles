@@ -8,7 +8,7 @@ alias mv='mv -i'
 alias mvn='MAVEN_OPTS=-Djansi.force=true mvn -B --log-file log/build.log -Dstyle.color=always --global-settings ~/.m2/settings.xml --fail-fast -DfailIfNoTests=false -Dmaven.test.failure.ignore=false' # https://issues.apache.org/jira/browse/MNG-6380
 alias rm='rm -i'
 alias scala='scala -deprecation -Xlint -feature'
-alias tags='rm -f TAGS; find . -name "*.java" -print | xargs etags --append'
+alias tags='rm -f TAGS; find . -name "*.py" -print | xargs etags --append'
 alias vi='vim -i NONE'
 
 HISTFILE=~/.zhistory
@@ -53,13 +53,6 @@ function nod { # notify on done
 function 2fa {
   oathtool --base32 --totp $(lpass show $1 --notes) | pbcopy
 }
-source '/Users/rgermain/src/blessclient/lyftprofile' # bless ssh alias
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/rgermain/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rgermain/Desktop/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/rgermain/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rgermain/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
 
 function keyboard { # not working
   case $1 in
@@ -78,10 +71,6 @@ function keyboard { # not working
 function mysql {
   p=$(lpass show databases --password)
   /usr/local/opt/mysql@5.5/bin/mysql --defaults-extra-file=<(echo "[client]\nuser=$USER\npassword=$p") $*
-}
-
-function dbot_unlock {
-  PGPASSWORD=$(lpass show postgres --password) PGUSER=$(lpass show postgres --username) PGHOST=$(lpass show postgres --url|sed -e 's|.*://||') PGDATABASE=$(lpass show postgres --note) psql -c "update public.environment set lock ='{\"dwh\":false,\"main\":false,\"prepare\":false}'::JSONB where name= '$1';"
 }
 
 PATH=$PATH:/Users/rgermain/.lyftkube-bin
