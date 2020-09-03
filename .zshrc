@@ -8,7 +8,7 @@ alias mv='mv -i'
 alias mvn='MAVEN_OPTS=-Djansi.force=true mvn -B --log-file log/build.log -Dstyle.color=always --global-settings ~/.m2/settings.xml --fail-fast -DfailIfNoTests=false -Dmaven.test.failure.ignore=false' # https://issues.apache.org/jira/browse/MNG-6380
 alias rm='rm -i'
 alias scala='scala -deprecation -Xlint -feature'
-alias tags='rm -f TAGS; find . -name "*.py" -print | xargs etags --append'
+alias tags='rm -f TAGS; find . -name "*.py" -print | xargs etags --append --langage=python'
 alias vi='vim -i NONE'
 
 HISTFILE=~/.zhistory

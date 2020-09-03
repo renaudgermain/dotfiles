@@ -89,6 +89,7 @@
                 ("\\.org$"            . org-mode)
                 ("\\.sql\\.ftl$"      . sql-mode)
                 ("\\.mustache"        . mustache-mode)
+                ("\\.ipynb"           . json-mode)
                 )
               auto-mode-alist
               (list (cons (concat "^" (expand-file-name "~/") "\\.") 'shell-script-mode))
@@ -109,7 +110,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit pip-requirements go-mode protobuf-mode idle-highlight-mode helm flycheck groovy-mode lsp-mode lsp-java eglot terraform-mode apples-mode mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode jdecomp))))
+    (json-mode magit pip-requirements go-mode protobuf-mode idle-highlight-mode helm flycheck groovy-mode lsp-mode lsp-java eglot terraform-mode apples-mode mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode jdecomp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

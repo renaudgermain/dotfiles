@@ -1,1 +1,6 @@
 --type-set=freemarker:ext:ftl
+--ignore-dir=.env
+--ignore-dir=_coverage
+--ignore-file=match:TAGS
+--ignore-dir=.idea
+--ignore-file=match:_coverage.xml
