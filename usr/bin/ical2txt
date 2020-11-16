@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Data::ICal;
+
+for my $event (@{Data::ICal->new(filename => $ARGV[0])->entries}) {
+    next unless $event->ical_entry_type eq 'VEVENT';
+    print prop($event, 'DESCRIPTION') . "\n";
+    print time_format(prop($event, 'DTSTART')) . "\n";
+    print time_format(prop($event, 'DTEND')) . "\n";
+}
+
+sub prop {
+    my($event, $key) = @_;
+    my $v = $event->property($key) or return;
+    $v->[0]->value;
+}
+
+sub time_format {
+    $_[0] =~ s/(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})/$1-$2-$3 $4:$5:$6/r;
+}
