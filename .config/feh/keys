@@ -17,8 +17,8 @@ reload_image
 
 scroll_up    k
 scroll_down  j
-scroll_left  l
-scroll_right h
+scroll_left  h
+scroll_right l
 toggle_filenames i
 
 render C-l r
