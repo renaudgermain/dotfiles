@@ -1,3 +1,3 @@
 #!/bin/sh -e
 
-import ~/tmp/ScreenShot_$(date +%FT%T).png
+import ~/ScreenShot_$(date +%FT%T).png
