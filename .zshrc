@@ -1,4 +1,5 @@
 alias br='tail -50 log/build.log'
+alias caemail='mutt -F ~/.muttrc_cae'
 alias cp='cp -i'
 alias e='emacs'
 alias grep="grep --exclude=TAGS --exclude='*.class' --color=always"
