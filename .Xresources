@@ -33,7 +33,8 @@ XLock.startCmd: $HOME/usr/bin/hostoff
 XLock.username: \040\040\040\040user\040
 XLock.password: password
 XLock.description: false
-XLock.font: -adobe-courier-bold-r-normal--25-180-100-100-m-150-iso10646-1
+XLock.font: -adobe-courier-bold-r-normal--34-240-100-100-m-200-iso10646-1
+XLock.planfont: -misc-nil-medium-r-normal--2-20-75-75-c-10-misc-fontspecific
 XLock.info:
 XLock.echokeys: true
 XLock.echokey: *
