@@ -37,6 +37,7 @@ function precmd {
   branch_name=${branch_name:-HEAD}
   RPROMPT="%F{blue}[$branch_name]%f"
 
+  rm -rf ~/Movies/TV
   for i in Applications Documents Downloads Movies Music Pictures Public; do
     if [ -d ~/$i ]; then
         /bin/rm -f ~/$i/.localized
@@ -44,6 +45,7 @@ function precmd {
         rmdir ~/$i
     fi
   done
+  rm -f ~/Google\ Drive\ File\ Stream
 }
 
 function nod { # notify on done

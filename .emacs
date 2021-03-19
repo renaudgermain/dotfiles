@@ -69,8 +69,10 @@
       css-mode-hook        '((lambda () (linum-mode 1)))
       go-mode-hook         '((lambda () (linum-mode 1)))
       mail-mode-hook       '(auto-fill-mode)
+      octave-mode-hook     '((lambda () (linum-mode 1)))
       python-mode-hook     '((lambda () (linum-mode 1)))
       scala-mode-hook      '((lambda () (linum-mode 1)))
+      yaml-mode-hook       '((lambda () (linum-mode 1)))
       ;; haskell-mode-hook '((lambda () (load "haskell-site-file.el")))
       ;; sml-mode-hook    '(lambda () (defun run-sml () (interactive) (sml-run "sml" "-Cprint.depth=100")))
       before-save-hook     '(delete-trailing-whitespace (lambda () (copyright-update t)));; TODO indent file, remove unused imports, TODO disable when editing liquidbase changesets (e.g. update_MAIN.xml)
@@ -84,12 +86,14 @@
                 ("Muttrc"             . muttrc-mode)
                 ("^\/var\/folders\/.*\/mutt"       . mail-mode)
                 ("^\/etc\/"           . shell-script-mode)
+                ("\\.md$"             . markdown-mode)
                 ("\\.py$"             . python-mode)
                 ("\\.php$"            . html-mode)
                 ("\\.org$"            . org-mode)
                 ("\\.sql\\.ftl$"      . sql-mode)
                 ("\\.mustache"        . mustache-mode)
                 ("\\.ipynb"           . json-mode)
+                ("\\.m"               . octave-mode)
                 )
               auto-mode-alist
               (list (cons (concat "^" (expand-file-name "~/") "\\.") 'shell-script-mode))
@@ -109,8 +113,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (json-mode magit pip-requirements go-mode protobuf-mode idle-highlight-mode helm flycheck groovy-mode lsp-mode lsp-java eglot terraform-mode apples-mode mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode jdecomp))))
+   '(typescript-mode json-mode magit pip-requirements go-mode protobuf-mode idle-highlight-mode helm flycheck groovy-mode lsp-mode lsp-java eglot terraform-mode apples-mode mustache mustache-mode dockerfile-mode java-imports yaml-mode scala-mode feature-mode markdown-mode jdecomp)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
