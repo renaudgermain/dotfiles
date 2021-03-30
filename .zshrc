@@ -54,7 +54,7 @@ function nod { # notify on done
 }
 
 function 2fa {
-  oathtool --base32 --totp $(lpass show $1 --notes) | pbcopy
+  oathtool --base32 --totp $(lpass show $1 --notes|head -1) | pbcopy
 }
 
 function keyboard { # not working
