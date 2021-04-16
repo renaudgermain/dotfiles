@@ -76,4 +76,8 @@ function mysql {
   /usr/local/opt/mysql@5.5/bin/mysql --defaults-extra-file=<(echo "[client]\nuser=$USER\npassword=$p") $*
 }
 
+function sqlcmd {
+   env INPUTRC=<(echo '"\C-m": "\C-jGO\C-j"') rlwrap --always-readline -t dumb --forget-matching GO sqlcmd $*
+}
+
 PATH=$PATH:/Users/rgermain/.lyftkube-bin
