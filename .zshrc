@@ -20,6 +20,7 @@ setopt HIST_IGNORE_DUPS
 
 export LESSOPEN="|-~/.lessfilter %s"
 export PAGER='less -L'
+export REDISCLI_AUTH=$(lpass show --password zoltar-uat-cache.redis.cache.windows.net)
 umask 077
 
 function precmd {
