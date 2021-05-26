@@ -28,7 +28,7 @@ case $(whoami):$(hostname) in
         # pkg_info -mz
         pkg_add git rxvt-unicode
         pkg_add feh gnupg--%gnupg2 mutt-gpgme-sasl rclone
-        pkg_add ImageMagick abook aspell aspell-fr cabal-install docx2txt emacs--no_x11%emacs eyeD3 firefox ghc gnupg--%gnupg2 go mediainfo \
+        pkg_add ImageMagick abook aspell aspell-fr cabal-install docx2txt emacs--no_x11%emacs eyeD3 firefox-esr ghc gnupg--%gnupg2 go mediainfo \
                 login_oath mpg321 mpv mupdf-1.16.1p1 p5-Data-ICal surfraw unzip-6.0p13 urlview-0.9p8 inconsolata-font iridium w3m-0.5.3p8
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts

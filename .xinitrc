@@ -45,7 +45,7 @@ case $(hostname):$1 in
         xset r rate 500 90
         # export TABBED_XID=$(tabbed -g 1440x900+0+0 -d)
         urxvt &
-        firefox &
+        firefox-esr &
         xidle &
         exec ssh-agent cwm
         ;;
