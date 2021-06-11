@@ -99,7 +99,7 @@
  '(cyberpunk-transparent-background t)
  '(package-selected-packages
    (quote
-    (scala-mode fish-mode markdown-mode haskell-mode go-mode))))
+    (dockerfile-mode haskell-emacs scala-mode fish-mode markdown-mode haskell-mode go-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
