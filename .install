@@ -27,9 +27,10 @@ case $(whoami):$(hostname) in
     root:gulf)
         # pkg_info -mz
         pkg_add git rxvt-unicode
-        pkg_add feh gnupg--%gnupg2 mutt-gpgme-sasl rclone
-        pkg_add ImageMagick abook aspell aspell-fr cabal-install docx2txt emacs--no_x11%emacs eyeD3 firefox-esr ghc gnupg--%gnupg2 go mediainfo \
-                login_oath mpg321 mpv mupdf-1.16.1p1 p5-Data-ICal surfraw unzip-6.0p13 urlview-0.9p8 inconsolata-font iridium w3m-0.5.3p8
+        pkg_add feh gnupg mutt-2.0.6v3-gpgme-sasl rclone
+        pkg_add ImageMagick abook aspell aspell-fr colorls docx2txt emacs--no_x11%emacs eyeD3 firefox-esr jq mediainfo \
+                login_oath mpg321 mpv mupdf-1.18.0 p5-Data-ICal rsync-3.2.3 surfraw urlview-0.9p8 inconsolata-font unzip-6.0p14 w3m-0.5.3p8
+        pkg_add cabal-install ghc go iridium
         # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
         mkdir /home/rcog/{doc,media}

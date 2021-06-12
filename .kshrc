@@ -6,7 +6,7 @@ alias e='emacs'
 alias feh='feh --scale-down --image-bg black --fullscreen --hide-pointer'
 alias off="ssh delta env DISPLAY=$(ssh delta ps aux | grep gulf | grep xserver | sed -e 's/.* \(:[0-9]\) .*/\1/') xset dpms force off"
 alias cp='cp -i'
-alias mpv='mpv --vo=x11 --profile=sw-fast --ao=sndio'
+alias mpv='mpv --vo=x11 --profile=sw-fast'
 alias mv='mv -i'
 alias pl='nq -c mpg321'
 alias rm='rm -i'
