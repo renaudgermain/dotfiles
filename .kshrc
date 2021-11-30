@@ -11,7 +11,6 @@ alias mv='mv -i'
 alias pl='nq -c mpg321'
 alias rm='rm -i'
 alias tmux='tmux -u'
-alias wp='wikipedia'
 
 export PAGER='less'
 export EDITOR='emacs'

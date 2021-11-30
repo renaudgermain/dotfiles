@@ -1,3 +1,8 @@
 #!/bin/sh -e
-# /bin/sh -c "/usr/local/bin/surf -e $TABBED_XID $1 > /dev/null &"
-firefox-esr $1
+
+w=$(xdotool getactivewindow)
+/bin/sh -c "/usr/local/bin/surf -e $TABBED_XID $1 > /dev/null 2>&1 &" > /dev/null 2>&1
+sleep 0.7
+xdotool windowraise $w
+xdotool windowfocus $w
+# firefox-esr $1
