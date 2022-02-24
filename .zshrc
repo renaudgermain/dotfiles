@@ -1,12 +1,9 @@
-alias br='tail -50 log/build.log'
-alias caemail='mutt -F ~/.muttrc_cae'
 alias cp='cp -i'
 alias e='emacs'
 alias grep="grep --exclude=TAGS --exclude='*.class' --color=always"
 alias less='less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init'
 alias ls='ls -G'
 alias mv='mv -i'
-alias mvn='MAVEN_OPTS=-Djansi.force=true mvn -B --log-file log/build.log -Dstyle.color=always --global-settings ~/.m2/settings.xml --fail-fast -DfailIfNoTests=false -Dmaven.test.failure.ignore=false' # https://issues.apache.org/jira/browse/MNG-6380
 alias rm='rm -i'
 alias scala='scala -deprecation -Xlint -feature'
 alias tags='rm -f TAGS; find * -name "*.py" -print | xargs etags --append --regex="/\(def\|class\)[ \t]+\([A-Za-z_]+\)/\2/" --regex="/^\([A-Z_]+\)/\1/"'
@@ -20,7 +17,10 @@ setopt HIST_IGNORE_DUPS
 
 export LESSOPEN="|-~/.lessfilter %s"
 export PAGER='less -L'
-export REDISCLI_AUTH=$(lpass show --password zoltar-uat-cache.redis.cache.windows.net)
+export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string -g RG_EA_Infra_CACE_Hellcat_POC -n brphellcatcacelrspoc| jq -r .connectionString)
+export PYTHONDONTWRITEBYTECODE=1
+export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+
 umask 077
 
 function precmd {
@@ -80,5 +80,3 @@ function mysql {
 function sqlcmd {
    env INPUTRC=<(echo '"\C-m": "\C-jGO\C-j"') rlwrap --always-readline -t dumb --forget-matching GO sqlcmd $*
 }
-
-PATH=$PATH:/Users/rgermain/.lyftkube-bin

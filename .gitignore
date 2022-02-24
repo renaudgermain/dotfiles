@@ -50,9 +50,6 @@ Library
 bak
 doc
 media
-mysql-dev-data
 src
 tmp
 usr/bin/drop_db
-usr/bin/sputnik
-usr/ftk-sputnik-simulator-34.0.0-4143-sim

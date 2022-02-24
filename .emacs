@@ -72,6 +72,7 @@
       octave-mode-hook     '((lambda () (linum-mode 1)))
       python-mode-hook     '((lambda () (linum-mode 1)))
       scala-mode-hook      '((lambda () (linum-mode 1)))
+      sql-mode-hook        '((lambda () (linum-mode 1)))
       yaml-mode-hook       '((lambda () (linum-mode 1)))
       ;; haskell-mode-hook '((lambda () (load "haskell-site-file.el")))
       ;; sml-mode-hook    '(lambda () (defun run-sml () (interactive) (sml-run "sml" "-Cprint.depth=100")))
@@ -129,3 +130,4 @@
 (defun display-ansi-colors ()
   (interactive)
   (ansi-color-apply-on-region (point-min) (point-max)))
+(put 'dired-find-alternate-file 'disabled nil)

@@ -59,7 +59,7 @@ color tilde      default     default
 color header     green       default "subject:"
 color hdrdefault magenta     default
 color signature  magenta     default
-color indicator  brightwhite default
+color indicator  brightyellow default
 color error      red         default
 color status     green       default
 color tree       magenta     default
@@ -87,8 +87,8 @@ color quoted3    red         default
 color quoted4    cyan        default
 color quoted5    magenta     default
 color index      magenta     default ~F
-color index      white       default ~N|~O
-color index      yellow      default ~T
+color index      yellow      default ~N|~O
+color index      red         default ~T
 color index      blue        default ~D
 
 
