@@ -1,7 +1,8 @@
+alias cat='bat'
 alias cp='cp -i'
 alias e='emacs'
 alias grep="grep --exclude=TAGS --exclude='*.class' --color=always"
-alias less='less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init'
+alias less='bat'
 alias ls='ls -G'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -46,7 +47,7 @@ function precmd {
         rmdir ~/$i
     fi
   done
-  rm -f ~/Google\ Drive\ File\ Stream
+  rm -f ~/Google\ Drive
 }
 
 function nod { # notify on done

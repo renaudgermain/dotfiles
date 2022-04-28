@@ -46,7 +46,10 @@ case $(hostname):$1 in
         firefox &
         exec ssh-agent cwm
         ;;
+    hotel*)
+        exec /opt/X11/bin/quartz-wm
+        ;;
     *)
-        echo "cannot start $(hostname):$1"
+        echo "cannot start $(hostname):$1" > ~/.xsession-errors
         ;;
 esac
