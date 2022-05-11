@@ -1,3 +1,4 @@
+export DOCKER_HOST="ssh://dockeruser@dockerhost.local"
 export EDITOR=emacs
 export EMAIL=renaud.germain@ivadolabs.com
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/usr/bin:/usr/local/opt/libpq/bin

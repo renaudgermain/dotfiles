@@ -1,0 +1,6 @@
+source "~/.muttrc"
+set from="`id -F` <`lpass show brp.microsoftonline.com --username`>"
+set imap_user=`lpass show brp.microsoftonline.com --username`
+set imap_pass=`lpass show brp.microsoftonline.com --password`
+set smtp_pass=`lpass show brp.microsoftonline.com --password`
+set smtp_url="smtps://`lpass show brp.microsoftonline.com --username`@smtp.gmail.com:465/"

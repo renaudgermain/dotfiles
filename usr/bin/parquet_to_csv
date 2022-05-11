@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import pandas
+import sys
+
+pandas.read_parquet(sys.argv[1]).to_csv(sys.stdout)

@@ -1,0 +1,13 @@
+source "~/.muttrc"
+set from="`id -F` <`lpass show circlekna.com --username`>"
+set imap_user=`lpass show circlekna.com --username`
+set imap_pass=`lpass show circlekna.com --password`
+set smtp_url="smtp.office365.com"
+set smtp_pass=`lpass show circlekna.com --password`
+set smtp_url = "smtp://`lpass show circlekna.com --username`@outlook.office365.com:587/"
+set ssl_force_tls = yes
+set smtp_authenticators = "login"
+set folder="imaps://outlook.office365.com/"
+set spoolfile= +INBOX
+set ssl_use_sslv3=yes
+# https://github.com/ork/mutt-office365/blob/master/muttrc
