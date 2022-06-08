@@ -5,12 +5,11 @@ my fullscreen_all()
 repeat with a in { "Slack", "Firefox", "Alacritty" }
     tell application "System Events"
         # [Built-in] 2880 x 1800 (retina 1440 x 900), [HP Z27] 3840x2160
-        tell process a to set position of windows to {-100, -1080}
+        tell process a to set position of windows to {-100, -1080}  # FIXME doesn't work for Slack
     end tell
 end repeat
 my fullscreen_all()
 
-# FIXME this part doesn't always work
 on fullscreen_all()
     set d to 1
     repeat with a in { "Slack", "Firefox", "Alacritty" }
