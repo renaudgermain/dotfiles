@@ -31,13 +31,13 @@ function precmd {
   else
       suffix='%F{blue}▶ %f'
   fi
-  PS1='%F{blue}[%F{yellow}%n@%m %F{green}%~%F{blue}]'$suffix
+  PS1="%K{blue}%F{black}%B%~%b%f%k%F{blue} $suffix "
   export SENDER_WIDTH=50
   export SUBJECT_WITDH=150
   branch_name=$(git symbolic-ref -q HEAD 2>/dev/null)
   branch_name=${branch_name##*/} # ${branch_name##refs/heads/}
   branch_name=${branch_name:-HEAD}
-  RPROMPT="%F{blue}[$branch_name]%f"
+  RPROMPT="%K{blue}%F{black}%B$branch_name%b%f%k"
 
   rm -rf ~/Movies/TV
   for i in Applications Documents Downloads Movies Music Pictures Public; do

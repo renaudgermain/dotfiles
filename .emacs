@@ -52,6 +52,7 @@
 
 ;; https://emacs.stackexchange.com/questions/17440/define-the-behaviour-of-help-window
 (setq fish-mode-hook       '((lambda () (linum-mode 1)))
+      conf-mode-hook       '((lambda () (linum-mode 1)))
       emacs-lisp-mode-hook '((lambda () (linum-mode 1)))
       js-mode-hook         '((lambda () (linum-mode 1)))
       haskell-mode-hook    '((lambda () (linum-mode 1)))
