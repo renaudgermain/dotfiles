@@ -1,6 +1,7 @@
 // easy links for surf
 // christian hahn <ch radamanthys de>, sep 2010
 
+/*
 testcomplete = function() {
     if(document.readyState=="complete") {
         run(); return;
@@ -108,3 +109,4 @@ run=function() {
         }
     }
 }
+*/
