@@ -8,7 +8,6 @@ alias off="ssh delta env DISPLAY=$(ssh delta ps aux | grep gulf | grep xserver |
 alias cp='cp -i'
 alias mpv='mpv --vo=x11 --profile=sw-fast'
 alias mv='mv -i'
-alias pl='nq -c mpg321'
 alias rm='rm -i'
 alias tmux='tmux -u'
 
@@ -31,6 +30,39 @@ bind -m '^L'='^U clear^J^Y'
 
 function wttr { curl "http://wttr.in/${1:-montreal}?m"; }
 function i { for i in "$@"; do mediainfo --Inform=file://$HOME/.mediainforc "$i" | expand -30; done; }
+
+function mz {
+    cmd=$1
+    shift
+    case $cmd in
+        play)
+            for i in "$@"; do nq -c mpg321 "$i"; done
+            ;;
+        pause)
+            current=$(find ~/.cache/nq/ -perm u+rwx -type f)
+            pid=$(echo $current | sed -e 's/.*\.//')
+            echo $pid > ~/.cache/mz.pid
+            kill -s SIGSTOP $pid
+            ;;
+        resume)
+            pid=$(cat ~/.cache/mz.pid)
+            kill -s SIGCONT $pid
+            ;;
+        list)
+            current=$(find ~/.cache/nq/ -perm u+rwx -type f)
+            for f in $(ls -tr $(find ~/.cache/nq -anewer $current -type f)); do
+                ps -p $(echo $f | sed -e 's/.*\.//') | tail -1
+            done
+            ;;
+        clear)
+            echo "Not implemented"
+            ;;
+        *)
+            echo $cmd
+            echo "mz {play|pause|resume|list|clear} my_song.mp3 ..."
+            ;;
+    esac
+}
 
 # IFS='
 # '
