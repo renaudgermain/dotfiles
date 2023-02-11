@@ -1,3 +1,4 @@
+# NOTE generate app password from google account -> security, plain google password doesn't work as of 2022-06-07
 source "gpg2 --pinentry-mode loopback --quiet --decrypt ~/.cache/mutt/passwords.gpg |"
 # set my_pass="`pass show renaud.germain/gmail.com`"
 
