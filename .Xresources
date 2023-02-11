@@ -30,6 +30,7 @@ XTerm*fullscreen: true
 xidle*timeout: 420
 
 XLock.startCmd: $HOME/usr/bin/hostoff
+XLock.endCmd: doas /bin/date $(ssh delta date +%H%M) > /dev/null
 XLock.username: \040\040\040\040user\040
 XLock.password: password
 XLock.description: false
