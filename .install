@@ -26,12 +26,11 @@ case $(whoami):$(hostname) in
         ;;
     root:gulf)
         # pkg_info -mz
-        pkg_add git rxvt-unicode
-        pkg_add feh gnupg mutt-2.0.6v3-gpgme-sasl rclone
-        pkg_add ImageMagick abook aspell aspell-fr colorls docx2txt emacs--no_x11%emacs eyeD3 firefox-esr jq mediainfo \
-                login_oath mpg321 mpv mupdf-1.18.0 p5-Data-ICal rsync-3.2.3 surfraw urlview-0.9p8 inconsolata-font unzip-6.0p14 w3m-0.5.3p8
+        pkg_add git rxvt-unicode--everything
+        pkg_add feh gnupg mutt--gpgme-sasl rclone
+        pkg_add ImageMagick abook aspell aspell-fr colorls docx2txt emacs--no_x11 eyeD3 firefox-esr jq mediainfo \
+                login_oath mpg321 mpv mupdf-- p5-Data-ICal rsync-- surfraw urlview-- inconsolata-font unzip-- w3m--
         pkg_add cabal-install ghc go iridium
-        # TODO echo '10.0.2.2        alpha' >> /etc/hosts
         echo '10.0.2.2        delta' >> /etc/hosts
         mkdir /home/rcog/{doc,media}
         rcctl set sndiod flags -mplay
@@ -87,12 +86,12 @@ EOF
 EOF
         scp delta:~/.wallpaper.jpg .
         export GPG_TTY=$(tty)
-        ssh -t delta gpg --armor --export-secret-keys 80BF439C | gpg2 --import # FIXME make ssh forward stderr, have gpg2 accept stdin
-        echo "trust\n5\ny\n" | gpg2 --command-fd 0 --edit-key 80BF439C
+        ssh -t delta gpg --armor --export-secret-keys 80BF439C | gpg --import # FIXME make ssh forward stderr, have gpg2 accept stdin
+        echo "trust\n5\ny\n" | gpg --command-fd 0 --edit-key 80BF439C
         echo 'default-key 7A6335617EADD4DA5DAEF9C6564FFC1780BF439C' >> $HOME/.gnupg/gpg.conf
         mkdir -p $HOME/.cache/mutt
         read p?'mutt password:' # FIXME secure input
-        echo "set imap_pass=\"$p\"\nset smtp_pass=\"$p\"" | gpg2 --encrypt --recipient 80BF439C > ~/.cache/mutt/passwords.gpg
+        echo "set imap_pass=\"$p\"\nset smtp_pass=\"$p\"" | gpg --encrypt --recipient 80BF439C > ~/.cache/mutt/passwords.gpg
         # might require restarting gpg-agent
         echo "TODO browser.tabs.loadDivertedInBackground = true, uBlock origin, Tridactyl, Video Downloader professional"
         # NOTE might need to click "See all versions" to get addons compatible w/ old Firefox
