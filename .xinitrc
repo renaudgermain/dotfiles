@@ -15,8 +15,9 @@ case $(hostname):$1 in
     delta:gulf)
         export QEMU_AUDIO_DRV=alsa
         exec qemu-system-x86_64 -smp 2 -m 4G -machine pc,accel=kvm -cpu kvm64 -enable-kvm -usb -device usb-tablet\
-             -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22,hostfwd=tcp:192.168.0.101:8080-:80 -device rtl8139,netdev=mynet0 \
-             -vga vmware -soundhw ac97 ~/.qemu/gulf.img -boot order=dc # -cdrom ~/bak/apps/os/install66.iso
+             -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22 -device e1000,netdev=mynet0 \
+             -vga vmware -soundhw ac97 ~/.qemu/gulf.img -boot order=dc # -cdrom ~/bak/apps/os/install72.iso
+             #-netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22,hostfwd=tcp:192.168.0.107:8080-:80 -device e1000,netdev=mynet0 \
         ;;
     delta:)
         feh --bg-center --no-fehbg ~/.wallpaper.jpg
@@ -28,8 +29,8 @@ case $(hostname):$1 in
         exec ssh-agent x-window-manager
         ;;
     delta:echo)
-        qemu-system-x86_64 ~/.qemu/echo.img -machine type=pc,accel=kvm -m 1G -cpu host -enable-kvm \
-           -vga virtio -netdev user,id=network0 -device rtl8139,netdev=network0 &
+        qemu-system-x86_64 ~/.qemu/echo.img -machine type=pc,accel=kvm -m 2G -cpu host -enable-kvm \
+           -vga virtio -netdev user,id=network0 -device rtl8139,netdev=network0 -boot order=cd -cdrom ~/bak/apps/os/debian-11.2.0-amd64-netinst.iso &
         sleep 2
         xdotool search --sync --name QEMU windowsize %@ 1440 900
         wait $!

@@ -9,3 +9,5 @@
 [alias]
   mdiff = diff --word-diff --minimal -w -b
   pr = pull-request
+[pull]
+	ff = only

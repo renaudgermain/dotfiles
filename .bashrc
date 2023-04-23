@@ -4,6 +4,7 @@ shopt -s cmdhist
 alias emx="emacs -batch -l"
 alias pl="moosic add -s"
 alias clisp="clisp -q"
+alias chromium="chromium --disable-gpu --disable-software-rasterizer"
 alias frde='dict -d fd-fra-deu'
 alias defr='dict -d fd-deu-fra'
 alias octave='octave -q'
@@ -118,7 +119,8 @@ function vol {
         q) break;;
         h) vol=$((vol == 0 ? 0 : vol - 1));;
         l) vol=$((vol == 100 ? 100 : vol + 1));;
-        0) vol=0;;
+        m) vol=0;;
+        0) vol=100;;
         1) vol=10;;
         2) vol=20;;
         3) vol=30;;

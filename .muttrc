@@ -79,7 +79,7 @@ color body       blue        default "^([0-9]{4}\-[0-9]{2}\-[0-9]{2}|[A-Z][a-z][
 color body       red         default "[^A-Za-z][Ff][Aa][Ii][Ll]([Ee][Dd])?[^A-Za-z]"
 color body       red         default "[^A-Za-z](error|fail|unreadable|invalid|exception)([^A-Za-z]|$)"
 color body       green       default "[Ss]uccess(ful)?"
-color body       blue        default " delta [A-Za-z-]+(\[[0-9]+\])?:"
+color body       blue        default " delta [A-Za-z_.-]+(\[[0-9]+\])?:"
 color quoted     white       default
 color quoted1    green       default
 color quoted2    yellow      default

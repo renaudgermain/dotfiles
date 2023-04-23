@@ -1,10 +1,10 @@
 import XMonad
 -- import qualified XMonad.StackSet as W
-import XMonad.Layout.NoBorders
+-- import XMonad.Layout.NoBorders
 
 main = xmonad defaultConfig {
          modMask    = mod4Mask -- yeah, pretty gay I can't bind to mod2 ...
-       , terminal   = "urxvt"
+       , terminal   = "st"
 --       , layoutHook = Full
 --       , manageHook = composeAll [
 --            resource  =? "Navigator" --> doF W.swapDown  -- doesn't work
