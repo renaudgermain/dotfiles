@@ -39,8 +39,8 @@ case $(whoami):$(hostname) in
         # https://dataswamp.org/~solene/2018-05-08-mfs-tmp.html
         cat <<EOF >> /etc/fstab
 swap                       /tmp                  mfs rw,nodev,noatime,async,nosuid,-s=128M 0 0
-delta:/home/rcog/media     /home/rcog/media      nfs ro,nodev,nosuid,soft,intr             0 0
-delta:/home/rcog/doc       /home/rcog/doc        nfs ro,nodev,nosuid,soft,intr             0 0
+delta:/home/rcog/media     /home/rcog/media      nfs ro,nodev,nosuid,soft,intr,tcp         0 0
+delta:/home/rcog/doc       /home/rcog/doc        nfs ro,nodev,nosuid,soft,intr,tcp         0 0
 EOF
         cat << EOF > /etc/X11/xenodm/Xresources
 xlogin.Login.echoPasswd:       true

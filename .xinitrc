@@ -16,7 +16,8 @@ case $(hostname):$1 in
         export QEMU_AUDIO_DRV=alsa
         exec qemu-system-x86_64 -smp 2 -m 4G -machine pc,accel=kvm -cpu kvm64 -enable-kvm -usb -device usb-tablet\
              -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22 -device e1000,netdev=mynet0 \
-             -vga vmware -soundhw ac97 ~/.qemu/gulf.img -boot order=dc # -cdrom ~/bak/apps/os/install72.iso
+             -audiodev driver=alsa,id=a1 -device AC97,audiodev=a1 \
+             -vga vmware ~/.qemu/gulf.img -boot order=dc # -cdrom ~/bak/apps/os/install72.iso
              #-netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:7922-:22,hostfwd=tcp:192.168.0.107:8080-:80 -device e1000,netdev=mynet0 \
         ;;
     delta:)
