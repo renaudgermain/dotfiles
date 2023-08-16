@@ -87,12 +87,12 @@ EOF
 EOF
         scp delta:~/.wallpaper.jpg .
         export GPG_TTY=$(tty)
-        ssh -t delta gpg --armor --export-secret-keys 80BF439C | gpg --import # FIXME make ssh forward stderr, have gpg2 accept stdin
-        echo "trust\n5\ny\n" | gpg --command-fd 0 --edit-key 80BF439C
-        echo 'default-key 7A6335617EADD4DA5DAEF9C6564FFC1780BF439C' >> $HOME/.gnupg/gpg.conf
+        ssh -t delta gpg --armor --export-secret-keys 6E6BCDEEDEBCF123 | gpg --import # FIXME make ssh forward stderr, have gpg2 accept stdin
+        echo "trust\n5\ny\n" | gpg --command-fd 0 --edit-key 6E6BCDEEDEBCF123
+        echo 'default-key 6E6BCDEEDEBCF123' >> $HOME/.gnupg/gpg.conf
         mkdir -p $HOME/.cache/mutt
         read p?'mutt password:' # FIXME secure input
-        echo "set imap_pass=\"$p\"\nset smtp_pass=\"$p\"" | gpg --encrypt --recipient 80BF439C > ~/.cache/mutt/passwords.gpg
+        echo "set imap_pass=\"$p\"\nset smtp_pass=\"$p\"" | gpg --encrypt --recipient 6E6BCDEEDEBCF123 > ~/.cache/mutt/passwords.gpg
         # might require restarting gpg-agent
         echo "TODO browser.tabs.loadDivertedInBackground = true, uBlock origin, Tridactyl, Video Downloader professional"
         # NOTE might need to click "See all versions" to get addons compatible w/ old Firefox
