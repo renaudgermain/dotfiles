@@ -27,7 +27,6 @@
       default-enable-multibyte-characters t
       cssm-indent-function           #'cssm-c-style-indenter
       default-input-method           "TeX" ;; write non-ascii characters as TeX expressions
-      linum-format                   "%3d "
       ispell-program-name            "aspell"
       visible-cursor                 nil
       js-indent-level                2
@@ -47,23 +46,23 @@
               fill-column            80
               mode-line-format       nil)
 
-(setq fish-mode-hook       '((lambda () (linum-mode 1)))
-      emacs-lisp-mode-hook '((lambda () (linum-mode 1)))
-      js-mode-hook         '((lambda () (linum-mode 1)))
-      haskell-mode-hook    '((lambda () (linum-mode 1)))
-      html-mode-hook       '((lambda () (linum-mode 1)))
+(setq fish-mode-hook       '((lambda () (display-line-numbers-mode 1)))
+      emacs-lisp-mode-hook '((lambda () (display-line-numbers-mode 1)))
+      js-mode-hook         '((lambda () (display-line-numbers-mode 1)))
+      haskell-mode-hook    '((lambda () (display-line-numbers-mode 1)))
+      html-mode-hook       '((lambda () (display-line-numbers-mode 1)))
       html-mode-hook       '((lambda ()
-                               (linum-mode 1)
+                               (display-line-number-mode 1)
                                (set (make-local-variable 'sgml-basic-offset) 4)))
-      nxml-mode-hook       '((lambda () (linum-mode 1)))
-      java-mode-hook       '((lambda () (linum-mode 1)
+      nxml-mode-hook       '((lambda () (display-line-numbers-mode 1)))
+      java-mode-hook       '((lambda () (display-line-numbers-mode 1)
                                (setq indent-tabs-mode t)
                                (setq c-offsets-alist
                                      (append '((arglist-intro . +) (case-label . +))
                                              c-offsets-alist))
                                (setq c-basic-offset 2)))
-      css-mode-hook        '((lambda () (linum-mode 1)))
-      go-mode-hook         '((lambda () (linum-mode 1)))
+      css-mode-hook        '((lambda () (display-line-numbers-mode 1)))
+      go-mode-hook         '((lambda () (display-line-numbers-mode 1)))
       mail-mode-hook       '(auto-fill-mode)
       ;; haskell-mode-hook '((lambda () (load "haskell-site-file.el")))
       ;; sml-mode-hook    '(lambda () (defun run-sml () (interactive) (sml-run "sml" "-Cprint.depth=100")))

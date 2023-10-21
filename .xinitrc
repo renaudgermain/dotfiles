@@ -1,9 +1,15 @@
-case $(hostname):$1 in
+case $(hostname 2>/dev/null || hostnamectl hostname):$1 in
     alpha:)
         xrandr --output default --mode 1440x900
         xrdb ~/.Xresources
         exec ratpoison
         ;;
+    bravo:)
+        xrdb ~/.Xresources
+        setxkbmap -layout us,ca -variant ,multix -option caps:super -option ctrl:swap_lwin_lctl -option ctrl:swap_rwin_rctl -option grp:lctrl_toggle
+        # documentation in /usr/share/X11/xkb/rules/base
+        urxvt &
+        exec bspwm
     delta:alpha)
         export QEMU_AUDIO_DRV=alsa
         exec qemu-system-x86_64 -m 2G -machine type=pc,accel=kvm -cpu host -enable-kvm \

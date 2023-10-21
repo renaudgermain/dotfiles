@@ -68,22 +68,22 @@ export HISTSIZE=9999
 export HISTFILE="$HOME/.bash_history"
 # export TERM='rxvt-unicode'
 export TERM='rxvt' # disable shitty color scheme from emacs
-# export PS1="\[[00;34m\][\[[00;33m\]\u@\h \[[00;32m\]\W\[[00;34m\]]▶ \[[00m\]"
+# export PS1="\[[00;34m\][\[[00;33m\]\u@\h \[[00;32m\]\W\[[00;34m\]]> \[[00m\]"
 export PROMPT_COMMAND=__prompt_command
 export EDITOR='/usr/bin/emacs'
 
 function __prompt_command {
     if [ $? != 0 ]; then
-        PS1="\[[00;34m\][\[[00;33m\]\u@\h \[[00;32m\]\W\[[00;34m\]]\[[00;31m\]▶ \[[00m\]"
+        PS1="\[[00;34m\][\[[00;33m\]\u@\h \[[00;32m\]\W\[[00;34m\]]\[[00;31m\]> \[[00m\]"
     else
-        PS1="\[[00;34m\][\[[00;33m\]\u@\h \[[00;32m\]\W\[[00;34m\]]▶ \[[00m\]"
+        PS1="\[[00;34m\][\[[00;33m\]\u@\h \[[00;32m\]\W\[[00;34m\]]> \[[00m\]"
     fi
     export SENDER_WIDTH=$((COLUMNS - 100))
 }
 
-if [ -n "$DISPLAY" ]; then
-    xset -b
-fi
+# if [ -n "$DISPLAY" ]; then
+#     xset -b
+# fi
 
 # ps -C mediatomb > /dev/null || mediatomb --interface wlan1 --daemon --logfile $HOME/.mediatomb/mediatomb.log
 
